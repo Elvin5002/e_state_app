@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "664306980856",
+    "project_id": "e-state-8291e",
+    "storage_bucket": "e-state-8291e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664306980856:android:6b696a7bfdfe60c300a80d",
+        "android_client_info": {
+          "package_name": "com.estate.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgp0HMJhNAjhQBYFaDK89E5og-jkKjI5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
