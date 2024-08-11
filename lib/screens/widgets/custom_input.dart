@@ -4,7 +4,18 @@ import 'package:flutter/material.dart';
 import '../../utilities/constants/app_colors.dart';
 
 class CustomInput extends StatelessWidget {
-  const CustomInput({Key? key, this.labelText, this.validator, required this.obscureText, this.controller, this.fillColor, this.hintText, this.suffixIcon, this.prefixIcon}) : super(key: key);
+  const CustomInput({
+    Key? key,
+    this.labelText,
+    this.validator,
+    required this.obscureText,
+    this.controller,
+    this.fillColor,
+    this.hintText,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.hintStyle,
+  }) : super(key: key);
 
   final String? labelText;
   final String? Function(String?)? validator;
@@ -13,8 +24,8 @@ class CustomInput extends StatelessWidget {
   final Color? fillColor;
   final String? hintText;
   final Widget? suffixIcon;
-  final Widget? prefixIcon; 
-
+  final Widget? prefixIcon;
+  final TextStyle? hintStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +38,13 @@ class CustomInput extends StatelessWidget {
       decoration: InputDecoration(
         isDense: true,
         hintText: hintText,
+        hintStyle: hintStyle,
         labelText: labelText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         fillColor: fillColor,
         filled: true,
-        contentPadding: EdgeInsets.only(left: 20, top: 15, bottom: 15),
+        contentPadding: const EdgeInsets.only(left: 20, top: 15, bottom: 15),
         border: AppBorders.defaultInputBorder,
         errorBorder: AppBorders.errorInputBorder,
       ),

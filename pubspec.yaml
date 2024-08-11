@@ -33,6 +33,7 @@ flutter:
 
   assets:
    - assets/
+   - assets/png/
   #   - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
