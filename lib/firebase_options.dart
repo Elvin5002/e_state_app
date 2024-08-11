@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '664306980856',
     projectId: 'e-state-8291e',
     storageBucket: 'e-state-8291e.appspot.com',
+    androidClientId: '664306980856-ic53a3qnr23tnp97ala6qfg013lk36vd.apps.googleusercontent.com',
+    iosClientId: '664306980856-kolj3d3n6fmnq3laned3bhh9tk2h094j.apps.googleusercontent.com',
     iosBundleId: 'com.example.eStateApp',
   );
 
