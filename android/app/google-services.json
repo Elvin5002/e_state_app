@@ -12,7 +12,20 @@
           "package_name": "com.example.e_state_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "664306980856-ic53a3qnr23tnp97ala6qfg013lk36vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_state_app",
+            "certificate_hash": "77b77f5b215d8a006879facc867d276a0b1ee0a1"
+          }
+        },
+        {
+          "client_id": "664306980856-0e7is1khs5rav1hbrln8f3gqr4u0fkvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAgp0HMJhNAjhQBYFaDK89E5og-jkKjI5o"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664306980856-0e7is1khs5rav1hbrln8f3gqr4u0fkvk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "664306980856-kolj3d3n6fmnq3laned3bhh9tk2h094j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eStateApp"
+              }
+            }
+          ]
         }
       }
     }
