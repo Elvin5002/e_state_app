@@ -1,3 +1,4 @@
+
 class AppTexts { 
   AppTexts._(); 
 
@@ -26,4 +27,7 @@ class AppTexts {
   static const properties = "Show Properties";
   static const facebook = "Facebook";
   static const google = "Google";
+  static const search = 'Search';
+  static const matchedPro = 'Matched Property';
+  static const company = 'Company';
 }
