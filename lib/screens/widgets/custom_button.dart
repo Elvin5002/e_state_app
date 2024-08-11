@@ -2,15 +2,6 @@ import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton(
-      {Key? key,
-      required this.width,
-      required this.color,
-      this.borderColor = Colors.transparent,
-      required this.text,
-      this.textColor = Colors.white,
-      this.icon})
-      : super(key: key);
 const CustomButton({ Key? key, required this.width, required this.color, this.borderColor  = Colors.transparent, required this.text, this.textColor = Colors.white, this.widget, this.onTap}) : super(key: key);
 
   final double width;
@@ -47,11 +38,7 @@ const CustomButton({ Key? key, required this.width, required this.color, this.bo
               style: TextStyle(color: textColor),
             ),
             5.w,
-            Icon(icon),
-          ],
-        ));
-          ],
-        )
+          ],        )
       ),
     );
   }
