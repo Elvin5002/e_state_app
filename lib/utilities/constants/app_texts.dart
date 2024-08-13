@@ -30,4 +30,13 @@ class AppTexts {
   static const search = 'Search';
   static const matchedPro = 'Matched Property';
   static const company = 'Company';
+  static const per = '/Per 10 Square Fit';
+  static const bathroom = 'Bathroom';
+  static const bedroom = 'Bedroom';
+  static const kitchen = 'Kitchen';
+  static const schedule = 'Get Schedule';
+  static const call = 'Call';
+  static const propOwner = 'Property Owner';
+  static const description = 'Description';
+
 }

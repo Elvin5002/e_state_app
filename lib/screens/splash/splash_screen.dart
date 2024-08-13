@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 3000))
-        .whenComplete(() => context.replace(Pager.signup));
+        .whenComplete(() => context.replace(Pager.property));
     super.initState();
   }
 
@@ -39,11 +39,13 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: AppColors.lightGreen,
                 shape: BoxShape.circle
               ),
-              child: SizedBox(
-                width: 50.w,
-                height: 50.h,
-                child: SvgPicture.asset(AppAssets.vector)
-              )
+              child: Center( 
+                child: SizedBox(
+                  width: 40,  
+                  height: 45,
+                  child: SvgPicture.asset(AppAssets.vector),
+                ),
+              ),
             ),
             20.verticalSpace,
             Text(

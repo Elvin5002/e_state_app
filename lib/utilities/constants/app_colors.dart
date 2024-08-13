@@ -11,7 +11,13 @@ class AppColors {
   static const bg = Color(0xffF8F8F8);
   static const white = Color(0xffffffff);
   static const sGrey = Color(0xff001829);
-  static const Color lightGreen = Color.fromARGB(255, 162, 218, 192);
+  static const Color lightGreen = Color(0xfff2fbf8);
   static const Color transparent = Colors.transparent;
+  static const Color darkBlue = Color(0xff2aa1f7);
+  static const Color lightPink = Color(0xffFFEEEB);
+  static const Color pink = Color(0xffFE8A71);
+  static const Color grey = Color.fromARGB(255, 139, 143, 146);
+  static const Color lightGrey = Color(0xffe9e9ea);
+
 
 }

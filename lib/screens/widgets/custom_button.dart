@@ -1,5 +1,6 @@
-import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
+import '../../utilities/extensions/sizedbox_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
 const CustomButton({ Key? key, required this.width, required this.color, this.borderColor  = Colors.transparent, required this.text, this.textColor = Colors.white, this.widget, this.onTap}) : super(key: key);
@@ -35,10 +36,11 @@ const CustomButton({ Key? key, required this.width, required this.color, this.bo
             5.w,
             Text(
               text,
-              style: TextStyle(color: textColor),
+              style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500, color: textColor),
             ),
             5.w,
-          ],        )
+          ],
+        )
       ),
     );
   }
