@@ -8,13 +8,14 @@ class CustomInput extends StatelessWidget {
     Key? key,
     this.labelText,
     this.validator,
-    required this.obscureText,
+    this.obscureText = false,
     this.controller,
     this.fillColor,
     this.hintText,
     this.suffixIcon,
     this.prefixIcon,
-    this.hintStyle,
+    this.hintStyle, 
+    this.enabled = true,
   }) : super(key: key);
 
   final String? labelText;
@@ -26,6 +27,7 @@ class CustomInput extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextStyle? hintStyle;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class CustomInput extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         fillColor: fillColor,
+        enabled: enabled,
         filled: true,
         contentPadding: const EdgeInsets.only(left: 20, top: 15, bottom: 15),
         border: AppBorders.defaultInputBorder,

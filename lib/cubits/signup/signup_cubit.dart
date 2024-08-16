@@ -1,13 +1,9 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:e_state_app/data/contracts/auth_contract.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-
 import '../../data/services/auth_service.dart';
-
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
