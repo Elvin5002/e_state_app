@@ -18,6 +18,6 @@ const FilterTopView({ Key? key }) : super(key: key);
         42.verticalSpace,
         Text(AppTexts.budget, style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),),
       ],
-    );;
+    );
   }
 }

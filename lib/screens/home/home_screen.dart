@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             onTap: () {},
           ),
           15.verticalSpace,
-          const CategoryIcons(),
+          CategoryIcons(),
           15.verticalSpace,
           Row(
             children: [
