@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 3000))
-        .whenComplete(() => context.replace(Pager.property));
+        .whenComplete(() => context.replace(Pager.login));
     super.initState();
   }
 

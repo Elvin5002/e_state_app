@@ -38,5 +38,8 @@ class AppTexts {
   static const call = 'Call';
   static const propOwner = 'Property Owner';
   static const description = 'Description';
+  static const fullName = 'Full Name';
+  static const phone = 'Phone Number';
+  static const address = 'Address';
 
 }

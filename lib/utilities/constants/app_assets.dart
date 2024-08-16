@@ -22,6 +22,5 @@ class AppAssets {
   static const background = 'assets/png/background.png';
   static const call = 'assets/call.svg';
   static const back = 'assets/back_btn.svg';
-
-
+  static const avatar = 'assets/png/profile.png';
 }

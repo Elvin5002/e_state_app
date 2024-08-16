@@ -1,4 +1,3 @@
-import '../../cubits/facebook_login/facebook_login_cubit.dart';
 import '../../cubits/signup/signup_cubit.dart';
 import '../widgets/top_view.dart';
 import '../widgets/custom_button.dart';
@@ -22,118 +21,137 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignupCubit>();
+    final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 33),
         child: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TopView(
-                  title: AppTexts.letsLogin,
-                ),
-                40.verticalSpace,
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: BlocConsumer<SignupCubit, SignupState>(
-                          listener: (context, state) {
-                            if (state is SignupSuccess) {
-                              context.removeAll(Pager.filter);
-                            } else if (state is SignupFailure) {
-                              Snacks.error(context, state.errorMessage);
-                            }
-                          },
-                          builder: (context, state) {
-                            return CustomButton(
-                                width: context.fullWidth,
-                                color: AppColors.red,
-                                widget: SvgPicture.asset(AppAssets.google),
-                                text: AppTexts.google,
-                                onTap: () => cubit.signInWithGoogle(),
-                              );
-                          },
-                        )),
-                    19.horizontalSpace,
-                    Expanded(
-                        flex: 1,
-                        child: BlocConsumer<SignupCubit,SignupState>(
-                          listener: (context, state) {
-                            if (state is FacebookLoginSuccess) {
-                              context.removeAll(Pager.filter);
-                            } else if (state is SignupFailure) {
-                              Snacks.error(context, state.errorMessage);
-                            }
-                          },
-                          builder: (context, state) {
-                            return CustomButton(
-                              width: context.fullWidth,
-                              color: AppColors.blue,
-                              text: AppTexts.facebook,
-                              widget: SvgPicture.asset(AppAssets.facebook),
-                              onTap: () => cubit.signInWithFacebook(),
-                            );
-                          },
-                        )),
-                  ],
-                ),
-                30.verticalSpace,
-                CustomInput(
-                  obscureText: false,
-                  hintText: AppTexts.username,
-                ),
-                20.verticalSpace,
-                CustomInput(
-                  obscureText: false,
-                  hintText: AppTexts.email,
-                  controller: cubit.emailController,
-                ),
-                20.verticalSpace,
-                CustomInput(
-                  obscureText: true,
-                  hintText: AppTexts.password,
-                  controller: cubit.passwordController,
-                ),
-                30.verticalSpace,
-                BlocConsumer<SignupCubit, SignupState>(
-                  listener: (context, state) {
-                    if (state is SignupSuccess) {
-                      context.removeAll(Pager.login);
-                    } else if (state is SignupFailure) {
-                      Snacks.error(context, state.errorMessage);
-                    }
-                  },
-                  builder: (context, state) {
-                    return CustomButton(
-                        onTap: () => cubit.signUp(),
-                        width: context.fullWidth,
-                        color: AppColors.primary,
-                        text: AppTexts.signUp);
-                  },
-                ),
-                36.verticalSpace,
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const TopView(
+                    title: AppTexts.letsLogin,
+                  ),
+                  40.verticalSpace,
+                  Row(
                     children: [
-                      Text(
-                        AppTexts.dontAcc,
-                        style: GoogleFonts.poppins(fontSize: 14),
-                      ),
-                      5.horizontalSpace,
-                      TextButton(
-                          onPressed: () => context.replace(Pager.login),
-                          child: Text(
-                            AppTexts.signIn,
-                            style: GoogleFonts.poppins(
-                                color: AppColors.lightBlue, fontSize: 14),
-                          ))
+                      Expanded(
+                          flex: 1,
+                          child: BlocConsumer<SignupCubit, SignupState>(
+                            listener: (context, state) {
+                              if (state is SignupSuccess) {
+                                context.removeAll(Pager.fillProfile);
+                              } else if (state is SignupFailure) {
+                                Snacks.error(context, state.errorMessage);
+                              }
+                            },
+                            builder: (context, state) {
+                              return CustomButton(
+                                  width: context.fullWidth,
+                                  color: AppColors.red,
+                                  widget: SvgPicture.asset(AppAssets.google),
+                                  text: AppTexts.google,
+                                  onTap: () => cubit.signInWithGoogle(),
+                                );
+                            },
+                          )),
+                      19.horizontalSpace,
+                      Expanded(
+                          flex: 1,
+                          child: BlocConsumer<SignupCubit,SignupState>(
+                            listener: (context, state) {
+                              if (state is SignupSuccess) {
+                                context.removeAll(Pager.fillProfile);
+                              } else if (state is SignupFailure) {
+                                Snacks.error(context, state.errorMessage);
+                              }
+                            },
+                            builder: (context, state) {
+                              return CustomButton(
+                                width: context.fullWidth,
+                                color: AppColors.blue,
+                                text: AppTexts.facebook,
+                                widget: SvgPicture.asset(AppAssets.facebook),
+                                onTap: () => cubit.signInWithFacebook(),
+                              );
+                            },
+                          )),
                     ],
                   ),
-                )
-              ],
+                  30.verticalSpace,
+                  CustomInput(
+                    hintText: AppTexts.email,
+                    controller: cubit.emailController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Email cannot be empty';
+                      } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                        return 'Enter a valid email';
+                      }
+                      return null;
+                    },
+                  ),
+                  20.verticalSpace,
+                  CustomInput(
+                    obscureText: true,
+                    hintText: AppTexts.password,
+                    controller: cubit.passwordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password cannot be empty';
+                      } else if (value.length < 6) {
+                        return 'Password must be at least 6 characters long';
+                      }
+                      return null;
+                    },
+                  ),
+                  30.verticalSpace,
+                  BlocConsumer<SignupCubit, SignupState>(
+                    listener: (context, state) {
+                      if (state is SignupSuccess) {
+                        context.removeAll(Pager.fillProfile);
+                      } else if (state is SignupFailure) {
+                        Snacks.error(context, state.errorMessage);
+                      }
+                    },
+                    builder: (context, state) {
+                      return CustomButton(
+                          onTap: () {
+                            if (formKey.currentState?.validate() ?? false) {
+                              cubit.signUp();
+                            }
+                          },
+                          width: context.fullWidth,
+                          color: AppColors.primary,
+                          text: AppTexts.signUp);
+                    },
+                  ),
+                  36.verticalSpace,
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppTexts.dontAcc,
+                          style: GoogleFonts.poppins(fontSize: 14),
+                        ),
+                        5.horizontalSpace,
+                        TextButton(
+                            onPressed: () => context.replace(Pager.login),
+                            child: Text(
+                              AppTexts.signIn,
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.lightBlue, fontSize: 14),
+                            ))
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
