@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../utilities/extensions/navigation_extension.dart';
 import '../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 3000))
-        .whenComplete(() => context.replace(Pager.login));
+        .whenComplete(() =>  context.replace(FirebaseAuth.instance.currentUser == null
+        ? Pager.login: Pager.root));
     super.initState();
   }
 

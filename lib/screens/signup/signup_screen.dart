@@ -44,7 +44,7 @@ class SignupScreen extends StatelessWidget {
                           child: BlocConsumer<SignupCubit, SignupState>(
                             listener: (context, state) {
                               if (state is SignupSuccess) {
-                                context.removeAll(Pager.fillProfile);
+                                context.removeAll(Pager.root);
                               } else if (state is SignupFailure) {
                                 Snacks.error(context, state.errorMessage);
                               }
@@ -65,7 +65,7 @@ class SignupScreen extends StatelessWidget {
                           child: BlocConsumer<SignupCubit,SignupState>(
                             listener: (context, state) {
                               if (state is SignupSuccess) {
-                                context.removeAll(Pager.fillProfile);
+                                context.removeAll(Pager.root);
                               } else if (state is SignupFailure) {
                                 Snacks.error(context, state.errorMessage);
                               }

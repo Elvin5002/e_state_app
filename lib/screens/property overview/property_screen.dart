@@ -70,7 +70,15 @@ class PropertyScreen extends StatelessWidget {
                                   title: 'Artificial Apartment',
                                   location: 'NY, New York',
                                 ),
-                                Icon(Icons.save)
+                                CircleAvatar(
+                                  radius: 18,
+                                  backgroundColor: AppColors.lightRed,
+                                  child: Icon(
+                                    Icons.bookmark,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
+                                ),
                               ]),
                           20.verticalSpace,
                           SizedBox(

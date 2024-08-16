@@ -64,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                   BlocConsumer<LoginCubit, LoginState>(
                     listener: (context, state) {
                       if (state is LoginSuccess) {
-                        context.removeAll(Pager.filter);
+                        context.removeAll(Pager.root);
                       } else if (state is LoginFailure) {
                         Snacks.error(context, state.error);
                       }

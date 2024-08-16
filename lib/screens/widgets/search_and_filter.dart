@@ -9,7 +9,9 @@ import '../../utilities/constants/app_colors.dart';
 import '../../utilities/constants/app_text_styles.dart';
 
 class SearchAndFilter extends StatelessWidget {
-  const SearchAndFilter({super.key});
+  const SearchAndFilter({super.key, required this.onTap});
+
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,6 @@ class SearchAndFilter extends StatelessWidget {
           width: context.fullWidth * 0.682,
           height: context.fullHeight * 0.06,
           child: CustomInput(
-            obscureText: false,
             hintText: AppTexts.search,
             hintStyle: AppTextStyles.hintSearch,
             prefixIcon: SvgPicture.asset(
@@ -33,7 +34,7 @@ class SearchAndFilter extends StatelessWidget {
           width: context.fullWidth * 0.04,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: onTap,
           child: SizedBox(
             width: context.fullHeight * 0.06,
             height: context.fullHeight * 0.06,

@@ -1,4 +1,3 @@
-import 'package:e_state_app/utilities/constants/app_colors.dart';
 import 'package:e_state_app/utilities/constants/app_text_styles.dart';
 import 'package:e_state_app/utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,7 @@ class ProfilBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.white,
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: const EdgeInsets.only(top: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

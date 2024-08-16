@@ -6,7 +6,7 @@ import '../../cubits/home/home_cubit.dart';
 import '../../cubits/login/login_cubit.dart';
 import '../../cubits/signup/signup_cubit.dart';
 import 'package:e_state_app/locator.dart';
-import '../../screens/filter/empty_screen.dart';
+import '../../screens/root/root.dart';
 import '../../screens/filter/filter_screen.dart';
 import '../../screens/login/login_screen.dart';
 import '../../screens/property%20overview/property_screen.dart';
@@ -34,8 +34,7 @@ class Pager {
         child: const FilterScreen(),
       );
 
-  static Widget get empty =>
-      BlocProvider(create: (context) => HomeCubit(), child: EmptyScreen());
+  static Widget get root => BlocProvider(create: (context) => HomeCubit(), child: Root());
 
   static Widget get property => const PropertyScreen();
 }

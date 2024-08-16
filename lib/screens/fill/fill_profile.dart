@@ -17,7 +17,6 @@ import '../../utilities/helpers/pager.dart';
 import '../../utilities/helpers/snacks.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/phone_num_input.dart';
-import '../widgets/top_view.dart';
 
 class FillProfile extends StatelessWidget {
   const FillProfile({Key? key}) : super(key: key);
