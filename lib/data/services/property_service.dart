@@ -1,12 +1,12 @@
-import 'package:e_state_app/data/local/property_model.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/property_model.dart';
 
 class PropertyService {
-  List<PropertyModel> getProperties() {
-    return [
-      PropertyModel(
-          name: 'Francisco Apartment',
-          location: 'San Francisco, California',
-          price: 1500),
-    ];
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<PropertyModel>> fetchProperties() async {
+    final snapshot = await _firestore.collection('properties').get();
+    return snapshot.docs.map((doc) => PropertyModel.fromMap(doc.data())).toList();
   }
 }

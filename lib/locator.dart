@@ -1,3 +1,7 @@
+import 'package:e_state_app/data/contracts/property_contract.dart';
+import 'package:e_state_app/data/repositories/property_repository.dart';
+import 'package:e_state_app/data/services/property_service.dart';
+
 import 'data/contracts/auth_contract.dart';
 import 'data/contracts/user_contract.dart';
 import 'data/repositories/auth_repository.dart';
@@ -14,4 +18,7 @@ void setupLocator(){
 
   locator.registerLazySingleton(()=> UserService());
   locator.registerLazySingleton<UserContract>(()=> UserRepository(locator()));
+
+  locator.registerLazySingleton(()=> PropertyService());
+  locator.registerLazySingleton<PropertyContract>(()=> PropertyRepository(locator()));
 }

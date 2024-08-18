@@ -1,17 +1,15 @@
-import 'package:e_state_app/cubits/user/user_info_cubit.dart';
-import 'package:e_state_app/screens/fill/fill_profile.dart';
-
+import '../../cubits/user/user_info_cubit.dart';
+import '../../presentation/screens/fill/fill_profile.dart';
 import '../../cubits/filter/filter_cubit.dart';
 import '../../cubits/home/home_cubit.dart';
 import '../../cubits/login/login_cubit.dart';
 import '../../cubits/signup/signup_cubit.dart';
 import 'package:e_state_app/locator.dart';
-import '../../screens/root/root.dart';
-import '../../screens/filter/filter_screen.dart';
-import '../../screens/login/login_screen.dart';
-import '../../screens/property%20overview/property_screen.dart';
-import '../../screens/signup/signup_screen.dart';
-import '../../screens/splash/splash_screen.dart';
+import '../../presentation/screens/root/root.dart';
+import '../../presentation/screens/filter/filter_screen.dart';
+import '../../presentation/screens/login/login_screen.dart';
+import '../../presentation/screens/signup/signup_screen.dart';
+import '../../presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +32,5 @@ class Pager {
         child: const FilterScreen(),
       );
 
-  static Widget get root => BlocProvider(create: (context) => HomeCubit(), child: Root());
-
-  static Widget get property => const PropertyScreen();
+  static Widget get root => BlocProvider(create: (context) => HomeCubit(locator())..fetchProperties(), child: Root());
 }
