@@ -11,4 +11,8 @@ class PropertyRepository extends PropertyContract {
   @override
   Future<List<PropertyModel>> fetchProperties() => _propertyService.fetchProperties();
   
+  @override
+  Future<void> addProperty(PropertyModel property) =>  _propertyService.addProperty(property);
+
+  
 }

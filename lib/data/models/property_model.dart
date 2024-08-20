@@ -3,7 +3,7 @@ class PropertyModel {
   final String bedroom;
   final String category;
   final String description;
-  final String image;
+  final List<String> images;
   final String kitchen;
   final String location;
   final String ownerImg;
@@ -18,7 +18,7 @@ class PropertyModel {
     required this.bedroom,
     required this.category,
     required this.description,
-    required this.image,
+    required this.images,
     required this.kitchen,
     required this.location,
     required this.ownerImg,
@@ -36,7 +36,7 @@ class PropertyModel {
       bedroom: data['bedroom'] as String,
       category: data['category'] as String,
       description: data['description'] as String,
-      image: data['image'] as String,
+      images: List<String>.from(data['images']),
       kitchen: data['kitchen'] as String,
       location: data['location'] as String,
       ownerImg: data['ownerImg'] as String,
@@ -55,7 +55,7 @@ class PropertyModel {
       'bedroom': bedroom,
       'category': category,
       'description': description,
-      'image': image,
+      'images': images,
       'kitchen': kitchen,
       'location': location,
       'ownerImg': ownerImg,

@@ -13,8 +13,8 @@ class BottomNavBarItems {
       activeIcon: AppAssets.home,
     ),
     BottomNavBarItems(
-      icon: AppAssets.searchb,
-      activeIcon: AppAssets.searchb,
+      icon: AppAssets.add,
+      activeIcon: AppAssets.add,
     ),
     BottomNavBarItems(
       icon: AppAssets.save,

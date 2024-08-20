@@ -42,14 +42,14 @@ const BottomNavBar({ Key? key }) : super(key: key);
                   for (final item in navItems)
                     BottomNavigationBarItem(
                       label: '',
-                      icon: SvgPicture.asset(item.icon),
+                      icon: SizedBox(width: 20, height: 20, child: SvgPicture.asset(item.icon)),
                       activeIcon: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 18.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(item.activeIcon, color: AppColors.darkBlue,),
+                            SizedBox(width: 20, height: 20, child: SvgPicture.asset(item.activeIcon, color: AppColors.darkBlue,)),
                             10.verticalSpace,
                             SvgPicture.asset(AppAssets.polygon)
                           ],

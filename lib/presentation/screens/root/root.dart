@@ -1,7 +1,4 @@
-import 'package:e_state_app/cubits/property/property_cubit.dart';
-import 'package:e_state_app/locator.dart';
-
-import '../search/search_screen.dart';
+import '../add%20property/add_property.dart';
 import '../../../cubits/home/home_cubit.dart';
 import '../filter/widgets/view1.dart';
 import '../home/home_screen.dart';
@@ -30,7 +27,7 @@ class Root extends StatelessWidget {
 
   final views = <Widget>[
     const HomeScreen(),
-    SearchScreen(),
+    AddProperty(),
     Page3(),
     Page4(),
     Page5(),

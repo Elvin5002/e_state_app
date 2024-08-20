@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_state_app/presentation/widgets/save_button.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../data/models/property_model.dart';
@@ -26,15 +27,37 @@ class PropertyScreen extends StatelessWidget {
         child: Column(
           children: [
             Stack(children: [
-              Image.network(
-                property.image,
-                fit: BoxFit.cover,
-                height: 445,
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 445,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                  autoPlay: true,
+                ),
+                items: property.images.map((imageUrl) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: NetworkImage(imageUrl),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
               ),
               const Positioned(
                 top: 40,
                 left: 0,
-                child: BackButton(),
+                child: BackButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.grey),
+                  ),
+                ),
               ),
               Positioned(
                 top: 310,
