@@ -12,6 +12,8 @@ class AppTextStyles {
       fontWeight: FontWeight.w400);
   static final poppinsS18W400 =
       GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w400);
+  static final poppinsS24W400 =
+      GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w400);
   static final poppinsS18W500Black = GoogleFonts.poppins(
       fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.black);
   static final poppinsS22W500Black = GoogleFonts.poppins(
@@ -24,10 +26,23 @@ class AppTextStyles {
       fontSize: 12, fontWeight: FontWeight.w400, color: AppColors.black);
   static final poppinsS14W500Black = GoogleFonts.poppins(
       fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.black);
+  static final poppinsS14W400Black = GoogleFonts.poppins(
+      fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.black);
   static final poppinsS12W500Grey = GoogleFonts.poppins(
       fontSize: 12, fontWeight: FontWeight.w500, color: AppColors.grey);
   static final poppinsS22W500Blue = GoogleFonts.poppins(
       fontSize: 22, fontWeight: FontWeight.w500, color: AppColors.blue);
   static final poppinsS20W500Black = GoogleFonts.poppins(
       fontSize: 20, fontWeight: FontWeight.w500, color: AppColors.black);
+  static final poppinsS14W500White = GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500,color: AppColors.white);
+  static final poppinsS12W400Grey = GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400,color: AppColors.grey);
+  static final poppinsS12W400DarkGrey = GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400,color: AppColors.sGrey);
+  static final poppinsS16W500Black = GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: AppColors.black);
+  static final poppinsS22W600White = GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600, color: AppColors.white);
+  static final poppinsS22W600Black = GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600, color: AppColors.black);
+  static final poppinsS10W400Grey = GoogleFonts.poppins(fontSize: 10,fontWeight: FontWeight.w400,color: AppColors.sGrey);
+  static final poppinsS14W400Blue = GoogleFonts.poppins(color: AppColors.lightBlue, fontSize: 14, fontWeight: FontWeight.w400);
+  static final poppinsS14W400Grey = GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.sGrey);
+  static final poppinsS12W400Blue = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppColors.lightBlue);
+
 }

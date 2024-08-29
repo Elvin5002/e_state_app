@@ -60,4 +60,24 @@ class AppTexts {
   static const woodenHouse = 'Wooden House';
   static const locationAngles = 'Los Angeles, California';
   static const price2000 = '\$2000';
+  static const per = '/Per 10 Square Fit';
+  static const bathroom = 'Bathroom';
+  static const bedroom = 'Bedroom';
+  static const kitchen = 'Kitchen';
+  static const schedule = 'Get Schedule';
+  static const call = 'Call';
+  static const propOwner = 'Property Owner';
+  static const description = 'Description';
+  static const phone = 'Phone Number';
+  static const address = 'Address';
+  static const setting = 'SETTING';
+  static const basicInfo = "BASIC INFO";
+  static const pProfil = "Personal Profle";
+  static const changePass = "Change Password";
+  static const others = "OTHERS";
+  static const privacePolicy = "Privacy Policy";
+  static const dataSaver = "Data Saver";
+  static const rateUs = "Rate Us";
+  static const termsUse = "Terms of Use";
+  static const logOut = "Log Out";
 }

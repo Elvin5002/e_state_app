@@ -16,4 +16,26 @@ class AppAssets {
   static const building = "assets/building.svg";
   static const rectangle = "assets/rectangle.svg";
   static const franciscoApartment = "assets/francisco_apartment.svg";
+  static const home = 'assets/home.svg';
+  static const searchb = 'assets/searchB.svg';
+  static const message = 'assets/message.svg';
+  static const save = 'assets/save.svg';
+  static const polygon = 'assets/polygon.svg';
+  static const settings = 'assets/settings.svg';
+  static const edit = 'assets/edit.svg';
+  static const bathroom = 'assets/bathroom.svg';
+  static const bedroom = 'assets/bedroom.svg';
+  static const kitchen = 'assets/kitchen.svg';
+  static const background = 'assets/png/background.png';
+  static const call = 'assets/call.svg';
+  static const back = 'assets/back_btn.svg';
+  static const avatar = 'assets/png/profile.png';
+  static const person = "assets/person.svg";
+  static const lock = "assets/lock.svg";
+  static const privacy = "assets/privacy.svg";
+  static const data = "assets/data.svg";
+  static const star = "assets/star.svg";
+  static const terms = "assets/terms.svg";
+  static const phone = "assets/phone.svg";
+  static const logout = "assets/logout.svg";
 }
