@@ -1,16 +1,11 @@
-import 'package:e_state_app/screens/contact/contact_screen.dart';
-import 'package:e_state_app/screens/contact/contact_screen.dart';
-import 'package:e_state_app/screens/privace_policy/privace_policy.dart';
-import 'package:e_state_app/screens/setting/widget/setting_icon.dart';
+import 'package:e_state_app/presentation/screens/privace_policy/privace_policy.dart';
+import 'package:e_state_app/presentation/screens/setting/widget/setting_icon.dart';
 import 'package:e_state_app/utilities/constants/app_assets.dart';
 import 'package:e_state_app/utilities/constants/app_colors.dart';
 import 'package:e_state_app/utilities/constants/app_text_styles.dart';
 import 'package:e_state_app/utilities/constants/app_texts.dart';
-import 'package:e_state_app/utilities/extensions/navigation_extension.dart';
 import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
-import 'package:e_state_app/utilities/helpers/pager.dart';
 import 'package:flutter/material.dart';
-
 import '../contact/contact_screen.dart';
 
 class SettingScreen extends StatelessWidget {
