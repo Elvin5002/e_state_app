@@ -22,9 +22,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           const ProfilBar(),
           15.verticalSpace,
-          SearchAndFilter(
-            onTap: () {},
-          ),
+          const SearchAndFilter(),
           15.verticalSpace,
           CategoryIcons(),
           15.verticalSpace,
@@ -48,13 +46,14 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           10.verticalSpace,
-          BlocBuilder<HomeCubit, HomeState>(/*if (state is HomeFailure) {}*/
+          BlocBuilder<HomeCubit, HomeState>(
+            /*if (state is HomeFailure) {}*/
             builder: (context, state) {
               if (state is HomeLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              }else if(state is HomeSuccess){
+              } else if (state is HomeSuccess) {
                 final properties = state.properties;
                 return ListView.builder(
                   primary: false,
@@ -66,7 +65,8 @@ class HomeScreen extends StatelessWidget {
                       location: properties[i].location,
                       price: properties[i].price,
                       imageUrl: properties[i].image,
-                      onTap: () => context.to(PropertyScreen(property: properties[i])),
+                      onTap: () =>
+                          context.to(PropertyScreen(property: properties[i])),
                     );
                   },
                 );
