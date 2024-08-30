@@ -1,3 +1,7 @@
+import 'custom_input.dart';
+import '../../utilities/constants/app_assets.dart';
+import '../../utilities/constants/app_texts.dart';
+import '../../utilities/extensions/context_extension.dart';
 import 'package:e_state_app/presentation/widgets/custom_input.dart';
 import 'package:e_state_app/utilities/constants/app_assets.dart';
 import 'package:e_state_app/utilities/constants/app_texts.dart';
@@ -5,9 +9,7 @@ import 'package:e_state_app/utilities/extensions/context_extension.dart';
 import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../utilities/constants/app_colors.dart';
-import '../../utilities/constants/app_text_styles.dart';
 
 class SearchAndFilter extends StatelessWidget {
   const SearchAndFilter({
@@ -23,7 +25,6 @@ class SearchAndFilter extends StatelessWidget {
           height: context.fullHeight * 0.06,
           child: CustomInput(
             hintText: AppTexts.search,
-            hintStyle: AppTextStyles.hintSearch,
             prefixIcon: SvgPicture.asset(
               AppAssets.search,
               fit: BoxFit.none,

@@ -1,7 +1,7 @@
-import 'package:e_state_app/presentation/widgets/save_button.dart';
-import 'package:e_state_app/utilities/constants/app_border_radius.dart';
-import 'package:e_state_app/utilities/constants/app_colors.dart';
-import 'package:e_state_app/utilities/constants/app_text_styles.dart';
+import 'save_button.dart';
+import '../../utilities/constants/app_border_radius.dart';
+import '../../utilities/constants/app_colors.dart';
+import '../../utilities/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,14 +11,19 @@ class PropertyCard extends StatelessWidget {
   final String price;
   final String imageUrl;
   final VoidCallback onTap;
+  final VoidCallback saveProperty;
+  final VoidCallback deleteProperty;
+  final bool isSaved;
 
   const PropertyCard({
     super.key,
     required this.title,
     required this.location,
     required this.price,
-    required this.imageUrl, 
+    required this.imageUrl,
     required this.onTap,
+    required this.saveProperty, 
+    required this.isSaved, required this.deleteProperty,
   });
 
   @override
@@ -79,7 +84,8 @@ class PropertyCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(price, style: AppTextStyles.poppinsS22W500Blue),
+                            Text('\$$price',
+                                style: AppTextStyles.poppinsS22W500Blue),
                           ],
                         ),
                       ],
@@ -91,7 +97,7 @@ class PropertyCard extends StatelessWidget {
                 top: 150,
                 right: 20,
                 child: SaveButton(
-                  onTap: (){}
+                  isSaved: isSaved, deleteProperty: deleteProperty, saveProperty: saveProperty,
                 ),
               ),
             ],

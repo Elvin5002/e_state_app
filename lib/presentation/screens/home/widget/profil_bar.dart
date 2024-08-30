@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfilBar extends StatelessWidget {
-  const ProfilBar({super.key});
+  const ProfilBar({super.key, required this.fullName, required this.image});
+
+  final String fullName;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ProfilBar extends StatelessWidget {
               ),
               2.verticalSpace,
               Text(
-                AppTexts.james,
+                fullName,
                 style: AppTextStyles.poppinsS22W500Black,
               ),
             ],
@@ -33,7 +36,7 @@ class ProfilBar extends StatelessWidget {
             width: 37,
             child: ClipOval(
               child: Image.network(
-                'https://www.w3schools.com/w3images/avatar2.png', // Replace with your image URL
+                image,
                 fit: BoxFit.cover,
               ),
             ),

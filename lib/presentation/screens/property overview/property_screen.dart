@@ -1,10 +1,11 @@
-import 'package:e_state_app/presentation/widgets/save_button.dart';
+import 'widgets/room_view.dart';
+import 'property_location_screen.dart';
+import '../../widgets/save_button.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../data/models/property_model.dart';
 import '../../../utilities/extensions/context_extension.dart';
 import 'widgets/bottom_buttons.dart';
 import 'widgets/price_label.dart';
-import 'widgets/room_card.dart';
 import '../../../utilities/constants/app_assets.dart';
 import '../../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -26,15 +27,31 @@ class PropertyScreen extends StatelessWidget {
         child: Column(
           children: [
             Stack(children: [
-              Image.network(
-                property.image,
-                fit: BoxFit.cover,
+              SizedBox(
                 height: 445,
+                child: PageView.builder(
+                  itemCount: property.images.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(property.images[index]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
               const Positioned(
                 top: 40,
-                left: 0,
-                child: BackButton(),
+                left: 30,
+                child: BackButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(AppColors.lightGrey),
+                  ),
+                ),
               ),
               Positioned(
                 top: 310,
@@ -45,7 +62,19 @@ class PropertyScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PriceLabel(price: property.price),
-                    SvgPicture.asset(AppAssets.edit)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PropertyLocationScreen(
+                              initialLocation: property.location,
+                            ),
+                          ),
+                        );
+                      },
+                      child: SvgPicture.asset(AppAssets.edit),
+                    ),
                   ],
                 ),
               ),
@@ -72,33 +101,16 @@ class PropertyScreen extends StatelessWidget {
                               children: [
                                 PropertyTitle(
                                   title: property.title,
-                                  location: property.location,
+                                  location: property.city,
                                 ),
-                                SaveButton(
-                                  onTap: (){
-                                    
-                                  }
-                                )
-                              ]),
+                                SaveButton(isSaved: true, deleteProperty: () {  }, saveProperty: () {  },)
+                              ]
+                          ),
                           20.verticalSpace,
-                          SizedBox(
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                RoomCard(
-                                    icon: AppAssets.bathroom,
-                                    label: '${property.bathroom} Bathroom'),
-                                10.horizontalSpace,
-                                RoomCard(
-                                    icon: AppAssets.bedroom,
-                                    label: '${property.bedroom} Bedroom'),
-                                10.horizontalSpace,
-                                RoomCard(
-                                    icon: AppAssets.kitchen,
-                                    label: '${property.kitchen} Kitchen'),
-                              ],
-                            ),
+                          RoomView(
+                            bathroom: property.bathroom, 
+                            bedroom: property.bedroom, 
+                            kitchen: property.kitchen
                           ),
                           20.verticalSpace,
                           PropertyDescription(
@@ -130,7 +142,7 @@ class PropertyScreen extends StatelessWidget {
                                 
                               },
                               callTap: () async {
-                                final phoneNumber = 'tel:+994${property.phone}'; 
+                                final phoneNumber = 'tel:+994${property.phone}';
                                 await launchUrlString(phoneNumber);
                               },
                             )

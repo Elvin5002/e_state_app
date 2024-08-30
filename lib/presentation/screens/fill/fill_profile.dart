@@ -81,7 +81,6 @@ class FillProfile extends StatelessWidget {
                   CustomInput(
                     hintText: AppTexts.email,
                     controller: cubit.controllers["email"],
-                    enabled: false,
                     prefixIcon: const Icon(Icons.email),
                   ),
                   15.verticalSpace,

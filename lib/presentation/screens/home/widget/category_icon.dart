@@ -23,57 +23,59 @@ class CategoryIcons extends StatelessWidget {
       width: context.fullWidth,
       height: 101,
       child: StreamBuilder<int>(
-        stream: cubit.selectedCategory.stream,
-        builder: (context, snapshot) {
-          int selectedIndex = snapshot.data ?? cubit.selectedCategory.value;
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: icons.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => cubit.selectedCategory.value = index,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                            child: SizedBox(
-                                width: 32,
-                                height: 32,
-                                child: SvgPicture.asset(icons[index]))),
-                      ),
-                      const SizedBox(height: 5),
-                      if (selectedIndex == index)
+          stream: cubit.selectedCategory.stream,
+          builder: (context, snapshot) {
+            int selectedIndex = snapshot.data ?? cubit.selectedCategory.value;
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: icons.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    cubit.selectedCategory.value = index;
+                    cubit.fetchProperties();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
                         Container(
-                          width: 10,
-                          height: 10,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            shape: BoxShape.circle,
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                              ),
+                            ],
                           ),
+                          child: Center(
+                              child: SizedBox(
+                                  width: 32,
+                                  height: 32,
+                                  child: SvgPicture.asset(icons[index]))),
                         ),
-                    ],
+                        const SizedBox(height: 5),
+                        if (selectedIndex == index)
+                          Container(
+                            width: 10,
+                            height: 10,
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
-        }
-      ),
+                );
+              },
+            );
+          }),
     );
   }
 }

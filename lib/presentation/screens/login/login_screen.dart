@@ -1,5 +1,5 @@
-import 'package:e_state_app/presentation/widgets/custom_text_button.dart';
-
+import '../../widgets/loading_button.dart';
+import '../../widgets/custom_text_button.dart';
 import '../../../utilities/constants/app_text_styles.dart';
 import '../../../cubits/login/login_cubit.dart';
 import '../../widgets/top_view.dart';
@@ -9,11 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utilities/helpers/pager.dart';
 import '../../../utilities/helpers/snacks.dart';
 import '../../widgets/custom_input.dart';
-import '../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
-import '../../../utilities/constants/app_colors.dart';
 import '../../../utilities/constants/app_texts.dart';
-import '../../widgets/custom_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -72,15 +69,16 @@ class LoginScreen extends StatelessWidget {
                       }
                     },
                     builder: (context, state) {
-                      return CustomButton(
-                          onTap: () {
-                            if (formKey.currentState?.validate() ?? false) {
-                              cubit.login();
-                            }
-                          },
-                          width: context.fullWidth,
-                          color: AppColors.primary,
-                          text: AppTexts.login);
+                      final isLoading = state is LoginLoading;
+                      return LoadingButton(
+                        onTap: () {
+                          if (formKey.currentState?.validate() ?? false) {
+                            cubit.login();
+                          }
+                        },
+                        text: AppTexts.login, 
+                        isLoading: isLoading
+                      );
                     },
                   ),
                   20.verticalSpace,
@@ -101,9 +99,8 @@ class LoginScreen extends StatelessWidget {
                         ),
                         5.horizontalSpace,
                         CustomTextButton(
-                          text: AppTexts.signUp, 
-                          onPressed: () => context.replace(Pager.signup)
-                        )
+                            text: AppTexts.signUp,
+                            onPressed: () => context.replace(Pager.signup))
                       ],
                     ),
                   )
