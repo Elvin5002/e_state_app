@@ -31,5 +31,12 @@ class AppAssets {
   static const back = 'assets/back_btn.svg';
   static const avatar = 'assets/png/profile.png';
   static const add = 'assets/add.svg';
-
+  static const person = "assets/person.svg";
+  static const lock = "assets/lock.svg";
+  static const privacy = "assets/privacy.svg";
+  static const data = "assets/data.svg";
+  static const star = "assets/star.svg";
+  static const terms = "assets/terms.svg";
+  static const phone = "assets/phone.svg";
+  static const logout = "assets/logout.svg";
 }

@@ -138,7 +138,9 @@ class PropertyScreen extends StatelessWidget {
                             ),
                             15.verticalSpace,
                             BottomButtons(
-                              scheduleTap: () {},
+                              scheduleTap: () {
+                                
+                              },
                               callTap: () async {
                                 final phoneNumber = 'tel:+994${property.phone}';
                                 await launchUrlString(phoneNumber);

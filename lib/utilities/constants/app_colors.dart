@@ -20,6 +20,7 @@ class AppColors {
   static const Color lightPink = Color(0xffFFEEEB);
   static const Color pink = Color(0xffFE8A71);
   static const Color lightGrey = Color(0xffe9e9ea);
-
-
+  static const lorange = Color(0xFFFF9A3D);
+  static const lgreen = Color(0xFF67D155);
+  static const lightCoral = Color(0xFFFF9A3D);
 }

@@ -71,6 +71,14 @@ class AppTexts {
   static const phone = 'Phone Number';
   static const address = 'Address';
   static const saved = 'Saved';
-
-
+  static const setting = 'SETTING';
+  static const basicInfo = "BASIC INFO";
+  static const pProfil = "Personal Profle";
+  static const changePass = "Change Password";
+  static const others = "OTHERS";
+  static const privacePolicy = "Privacy Policy";
+  static const dataSaver = "Data Saver";
+  static const rateUs = "Rate Us";
+  static const termsUse = "Terms of Use";
+  static const logOut = "Log Out";
 }
