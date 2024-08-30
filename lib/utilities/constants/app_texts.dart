@@ -70,5 +70,7 @@ class AppTexts {
   static const description = 'Description';
   static const phone = 'Phone Number';
   static const address = 'Address';
+  static const saved = 'Saved';
+
 
 }

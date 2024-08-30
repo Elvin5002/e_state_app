@@ -30,4 +30,6 @@ class AppAssets {
   static const call = 'assets/call.svg';
   static const back = 'assets/back_btn.svg';
   static const avatar = 'assets/png/profile.png';
+  static const add = 'assets/add.svg';
+
 }

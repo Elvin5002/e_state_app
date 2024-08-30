@@ -14,7 +14,6 @@ const CustomButton({ Key? key, required this.width, required this.color, this.bo
   final void Function()? onTap;
 
   @override
-
   Widget build(BuildContext context){
     return GestureDetector(
       onTap: onTap,
@@ -38,7 +37,6 @@ const CustomButton({ Key? key, required this.width, required this.color, this.bo
               text,
               style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500, color: textColor),
             ),
-            5.w,
           ],
         )
       ),

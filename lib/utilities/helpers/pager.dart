@@ -1,3 +1,7 @@
+import 'package:e_state_app/cubits/favorite/favorite_cubit.dart';
+import 'package:e_state_app/cubits/property/property_cubit.dart';
+import 'package:e_state_app/presentation/screens/add%20property/select_location_screen.dart';
+
 import '../../cubits/user/user_info_cubit.dart';
 import '../../presentation/screens/fill/fill_profile.dart';
 import '../../cubits/filter/filter_cubit.dart';
@@ -32,5 +36,18 @@ class Pager {
         child: const FilterScreen(),
       );
 
-  static Widget get root => BlocProvider(create: (context) => HomeCubit(locator())..fetchProperties(), child: Root());
+  static Widget get root => MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => HomeCubit(locator())..fetchProperties()),
+      BlocProvider(create: (context) => PropertyCubit(locator())),
+      BlocProvider(create: (context) => UserInfoCubit(locator())..getUser()),
+      BlocProvider(create: (context) => FavoriteCubit(),)
+    ], 
+    child: Root()
+  );
+
+  static Widget get selectLocation => BlocProvider(
+        create: (context) => PropertyCubit(locator()),
+        child: SelectLocationScreen(),
+      );
 }

@@ -15,17 +15,17 @@ const BottomNavBar({ Key? key }) : super(key: key);
     const navItems = BottomNavBarItems.bottomNavBarItems;
     final cubit = context.read<HomeCubit>();
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(10),
         topRight: Radius.circular(10),
       ),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),
             topRight: Radius.circular(10),
           ),
-          color: Colors.white, // or any background color
+          color: Colors.white,
         ),
         child: StreamBuilder(
             initialData: 0,
@@ -42,14 +42,14 @@ const BottomNavBar({ Key? key }) : super(key: key);
                   for (final item in navItems)
                     BottomNavigationBarItem(
                       label: '',
-                      icon: SvgPicture.asset(item.icon),
+                      icon: SizedBox(width: 20, height: 20, child: SvgPicture.asset(item.icon)),
                       activeIcon: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 18.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(item.activeIcon, color: AppColors.darkBlue,),
+                            SizedBox(width: 20, height: 20, child: SvgPicture.asset(item.activeIcon, color: AppColors.darkBlue,)),
                             10.verticalSpace,
                             SvgPicture.asset(AppAssets.polygon)
                           ],
