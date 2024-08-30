@@ -21,7 +21,7 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SearchAndFilter(),
+            SearchAndFilter(onTap: () {  },),
             15.h,
             Text(
               AppTexts.matchedPro,

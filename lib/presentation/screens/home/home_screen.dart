@@ -55,21 +55,6 @@ class HomeScreen extends StatelessWidget {
                     AppTexts.allProperties,
                     style: AppTextStyles.poppinsS20W500Black,
                   ),
-      child: ListView(
-        children: [
-          const ProfilBar(),
-          15.verticalSpace,
-          const SearchAndFilter(),
-          15.verticalSpace,
-          CategoryIcons(),
-          15.verticalSpace,
-          Row(
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  AppTexts.allProperties,
-                  style: AppTextStyles.poppinsS20W500Black,
                 ),
                 const Spacer(),
                 TextButton(
@@ -80,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ),  
             10.verticalSpace,
             BlocBuilder<HomeCubit, HomeState>(
               /*if (state is HomeFailure) {}*/
@@ -117,39 +102,6 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-              ),
-            ],
-          ),
-          10.verticalSpace,
-          BlocBuilder<HomeCubit, HomeState>(
-            /*if (state is HomeFailure) {}*/
-            builder: (context, state) {
-              if (state is HomeLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is HomeSuccess) {
-                final properties = state.properties;
-                return ListView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  itemCount: properties.length,
-                  itemBuilder: (context, i) {
-                    return PropertyCard(
-                      title: properties[i].title,
-                      location: properties[i].location,
-                      price: properties[i].price,
-                      imageUrl: properties[i].image,
-                      onTap: () =>
-                          context.to(PropertyScreen(property: properties[i])),
-                    );
-                  },
-                );
-              }
-              return const SizedBox.shrink();
-            },
-          )
-        ],
       ),
     );
   }

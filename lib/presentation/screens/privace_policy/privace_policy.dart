@@ -1,5 +1,4 @@
-import 'package:e_state_app/main.dart';
-import 'package:e_state_app/screens/privace_policy/widget/privace_policy_text.dart';
+import 'package:e_state_app/presentation/screens/privace_policy/widget/privace_policy_text.dart';
 import 'package:e_state_app/utilities/constants/app_text_styles.dart';
 import 'package:e_state_app/utilities/constants/app_texts.dart';
 import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
