@@ -1,4 +1,5 @@
 import 'package:e_state_app/utilities/constants/app_text_styles.dart';
+import 'package:e_state_app/utilities/extensions/context_extension.dart';
 
 import '../../../../utilities/constants/app_border_radius.dart';
 import '../../../../utilities/constants/app_colors.dart';
@@ -15,11 +16,11 @@ const RoomCard({ Key? key, required this.icon, required this.label }) : super(ke
   @override
   Widget build(BuildContext context){
     return Container(
-      width: 98,
-      height: 91,
+      width: context.fullWidth * .2613,
+      height: context.fullHeight * .112,
       decoration: const BoxDecoration(
         borderRadius: AppBorderRadius.a20,
-        color: AppColors.lightPink
+        color: AppColors.lpink
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +33,7 @@ const RoomCard({ Key? key, required this.icon, required this.label }) : super(ke
               shape: BoxShape.circle,
               color: AppColors.lightPink
             ),
-            child: SizedBox(width: 16, height: 16, child: SvgPicture.asset(icon))
+            child: Center(child: SizedBox(width: 16, height: 16, child: SvgPicture.asset(icon)))
           ),
           8.verticalSpace,
           Text(label, style: AppTextStyles.poppinsS12W400Black,),

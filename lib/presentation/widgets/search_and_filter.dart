@@ -18,7 +18,7 @@ class SearchAndFilter extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: context.fullWidth * 0.682,
+          width: context.fullWidth * 0.68,
           height: context.fullHeight * 0.06,
           child: CustomInput(
             hintText: AppTexts.search,
@@ -83,8 +83,8 @@ class SearchAndFilter extends StatelessWidget {
                 });
           },
           child: SizedBox(
-            width: context.fullHeight * 0.06,
-            height: context.fullHeight * 0.06,
+            width: context.fullWidth * 0.12,
+            height: context.fullHeight * 0.054,
             child: SvgPicture.asset(AppAssets.filter),
           ),
         )

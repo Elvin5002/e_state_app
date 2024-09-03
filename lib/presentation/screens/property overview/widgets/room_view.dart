@@ -1,5 +1,5 @@
+import 'package:e_state_app/utilities/extensions/context_extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../utilities/constants/app_assets.dart';
 import 'room_card.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class RoomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: context.fullHeight * .112,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [

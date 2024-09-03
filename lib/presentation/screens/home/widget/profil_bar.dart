@@ -1,5 +1,6 @@
-import 'package:e_state_app/utilities/constants/app_text_styles.dart';
-import 'package:e_state_app/utilities/constants/app_texts.dart';
+import '../../../../utilities/constants/app_text_styles.dart';
+import '../../../../utilities/constants/app_texts.dart';
+import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +13,7 @@ class ProfilBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: context.fullHeight * .012),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -31,14 +32,11 @@ class ProfilBar extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 37,
-            width: 37,
-            child: ClipOval(
-              child: Image.network(
-                image,
-                fit: BoxFit.cover,
-              ),
+          CircleAvatar(
+            radius: 22.r,
+            child: Image.network(
+              image,
+              fit: BoxFit.cover,
             ),
           ),
         ],

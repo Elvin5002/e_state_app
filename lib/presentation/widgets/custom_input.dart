@@ -14,8 +14,8 @@ class CustomInput extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.prefixIcon,
-    this.enabled = true, 
-    this.keyboardType = TextInputType.text,
+    this.enabled = true,
+    this.keyboardType = TextInputType.text, this.line = 1,
   }) : super(key: key);
 
   final String? labelText;
@@ -28,6 +28,7 @@ class CustomInput extends StatelessWidget {
   final Widget? prefixIcon;
   final bool enabled;
   final TextInputType? keyboardType;
+  final int line;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class CustomInput extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       keyboardType: keyboardType,
+      maxLines: line,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       style: const TextStyle(color: AppColors.black),
       decoration: InputDecoration(
