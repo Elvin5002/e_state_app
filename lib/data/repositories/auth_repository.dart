@@ -17,6 +17,6 @@ class AuthRepository extends AuthContract{
   Future<UserCredential> signInWithGoogle() => _authService.signInWithGoogle();
 
   @override
-  Future<User> signUp(String email, String password) => _authService.signUp(email, password);
+  Future<void> signUp(String email, String password) => _authService.signUp(email, password);
   
 }

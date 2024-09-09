@@ -90,6 +90,12 @@ class UserInfoCubit extends Cubit<UserInfoState> {
     }
   }
 
+  void logOut() async {
+    emit(UserInfoLoading());
+    await FirebaseAuth.instance.signOut();
+    emit(UserInfoSuccess());
+  }
+
   /*Future<String?> _uploadDefaultImageToStorage(Uint8List imageBytes) async {
     try {
       final ref = FirebaseStorage.instance
