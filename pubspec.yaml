@@ -48,8 +48,9 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/
+   - assets/vectors/
    - assets/png/
+   - assets/lang/
   #   - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
