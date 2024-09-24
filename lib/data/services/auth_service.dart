@@ -1,20 +1,25 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
-
   //final Map<String, dynamic> _userData;
 
-  Future<User> signUp(String email, String password) async {
+  Future<void> signUp(String email, String password) async {
     final userCredentials =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
 
-    return userCredentials.user!;
+    // Send verification email
+    User? user = userCredentials.user;
+    if (user != null && !user.emailVerified) {
+      await user.sendEmailVerification();
+    }
+
+    // Optionally, sign out the user immediately to prevent access before email verification
+    //await FirebaseAuth.instance.signOut();
   }
 
   Future<User> login(String email, String password) async {
@@ -23,12 +28,20 @@ class AuthService {
       email: email,
       password: password,
     );
+
     return userCredentials.user!;
   }
 
-  Future<UserCredential> signInWithGoogle() async{
+  Future<void> sendVerificationEmail(User user) async {
+    if (!user.emailVerified) {
+      await user.sendEmailVerification();
+    }
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
@@ -43,7 +56,8 @@ class AuthService {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
     // Check if the login was successful
-    if (loginResult.status == LoginStatus.success && loginResult.accessToken != null) {
+    if (loginResult.status == LoginStatus.success &&
+        loginResult.accessToken != null) {
       final AccessToken accessToken = loginResult.accessToken!;
       final OAuthCredential facebookAuthCredential =
           FacebookAuthProvider.credential(accessToken.tokenString);

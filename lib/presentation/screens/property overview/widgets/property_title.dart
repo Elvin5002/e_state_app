@@ -22,7 +22,7 @@ class PropertyTitle extends StatelessWidget {
         3.verticalSpace,
         Row(
           children: [
-            const Icon(Icons.location_on, color: AppColors.grey),
+            const Icon(Icons.location_on, color: AppColors.grey, size: 15,),
             Text(
               location, 
               style: AppTextStyles.poppinsS12W400Grey,

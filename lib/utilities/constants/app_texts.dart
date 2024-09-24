@@ -71,7 +71,7 @@ class AppTexts {
   static const phone = 'Phone Number';
   static const address = 'Address';
   static const saved = 'Saved';
-  static const setting = 'SETTING';
+  static const setting = 'Settings';
   static const basicInfo = "BASIC INFO";
   static const pProfil = "Personal Profle";
   static const changePass = "Change Password";
@@ -81,4 +81,12 @@ class AppTexts {
   static const rateUs = "Rate Us";
   static const termsUse = "Terms of Use";
   static const logOut = "Log Out";
+  static const profile = "Owner Profile";
+  static const property = "Property";
+  static const apartment = "Apartment";
+  static const awards = "Awards";
+  static const portfolios = "Portfolios";
+  static const messages = "Messages";
+
+
 }

@@ -1,3 +1,4 @@
+import '../../../utilities/extensions/context_extension.dart';
 import '../../../utilities/constants/app_text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
@@ -54,23 +55,23 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ScaleTransition(
-              scale: _animation,
-              child: Container(
-                height: 120,
-                width: 120,
-                decoration: const BoxDecoration(
-                  color: AppColors.lightGreen,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: SizedBox(
-                    width: 40,
-                    height: 45,
-                    child: SvgPicture.asset(AppAssets.vector), 
-                  ),
+            scale: _animation,
+            child: Container(
+              height: context.fullHeight * .15,
+              width: context.fullWidth * .32,
+              decoration: const BoxDecoration(
+                color: AppColors.lightGreen,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: SizedBox(
+                  width: 40,
+                  height: 45,
+                  child: SvgPicture.asset(AppAssets.vector),
                 ),
               ),
             ),
+          ),
           20.verticalSpace,
           Text(
             AppTexts.appName,

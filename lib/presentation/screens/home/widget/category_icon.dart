@@ -1,6 +1,6 @@
-import 'package:e_state_app/cubits/home/home_cubit.dart';
+import '../../../../cubits/home/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utilities/constants/app_assets.dart';
 import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class CategoryIcons extends StatelessWidget {
     final cubit = context.read<HomeCubit>();
     return SizedBox(
       width: context.fullWidth,
-      height: 101,
+      height: context.fullHeight * .12,
       child: StreamBuilder<int>(
           stream: cubit.selectedCategory.stream,
           builder: (context, snapshot) {
@@ -36,12 +36,12 @@ class CategoryIcons extends StatelessWidget {
                     cubit.fetchProperties();
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(right: context.fullWidth * .032, top: 5, bottom: 5, left: 3),
                     child: Column(
                       children: [
                         Container(
-                          width: 70,
-                          height: 70,
+                          width: context.fullWidth * .186,
+                          height: context.fullHeight * .086,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
@@ -59,11 +59,11 @@ class CategoryIcons extends StatelessWidget {
                                   height: 32,
                                   child: SvgPicture.asset(icons[index]))),
                         ),
-                        const SizedBox(height: 5),
+                        2.verticalSpace,
                         if (selectedIndex == index)
                           Container(
-                            width: 10,
-                            height: 10,
+                            width: context.fullWidth * .026,
+                            height: context.fullHeight * .012,
                             decoration: const BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.circle,

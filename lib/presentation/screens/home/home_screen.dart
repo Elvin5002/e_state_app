@@ -1,6 +1,7 @@
-import 'package:e_state_app/cubits/favorite/favorite_cubit.dart';
-import 'package:e_state_app/cubits/home/home_cubit.dart';
-import 'package:e_state_app/cubits/user/user_info_cubit.dart';
+import '../../../cubits/favorite/favorite_cubit.dart';
+import '../../../cubits/home/home_cubit.dart';
+import '../../../cubits/user/user_info_cubit.dart';
+import '../../../utilities/extensions/context_extension.dart';
 import '../property%20overview/property_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widget/category_icon.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     final userCubit = context.read<UserInfoCubit>();
     final favoriteCubit = context.read<FavoriteCubit>();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: context.fullWidth * .08),
       child: RefreshIndicator(
         onRefresh: () async => cubit..fetchProperties(),
         child: ListView(
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
                   }
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 }),
             15.verticalSpace,
             SearchAndFilter(
@@ -46,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             ),
             15.verticalSpace,
             CategoryIcons(),
-            15.verticalSpace,
+            10.verticalSpace,
             Row(
               children: [
                 TextButton(
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            ),  
+            ),
             10.verticalSpace,
             BlocBuilder<HomeCubit, HomeState>(
               /*if (state is HomeFailure) {}*/
@@ -81,15 +82,17 @@ class HomeScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: properties.length,
                     itemBuilder: (context, i) {
-                      final isSaved = favoriteCubit.isPropertySaved(properties[i]);
+                      final isSaved =
+                          favoriteCubit.isPropertySaved(properties[i]);
                       return PropertyCard(
                         title: properties[i].title,
                         location: properties[i].city,
                         price: properties[i].price,
                         imageUrl: properties[i].images[0],
-                        onTap: () =>
-                            context.to(PropertyScreen(property: properties[i])),
-                        saveProperty: () => favoriteCubit.saveProperty(properties[i]),
+                        onTap: () => context
+                            .to(PropertyScreen(property: properties[i])),
+                        saveProperty: () =>
+                            favoriteCubit.saveProperty(properties[i]),
                         isSaved: isSaved,
                         deleteProperty: () =>
                             favoriteCubit.deleteProperty(properties[i]),

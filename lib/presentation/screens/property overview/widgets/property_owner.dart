@@ -4,17 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PropertyOwner extends StatelessWidget {
-  const PropertyOwner({Key? key, required this.name, required this.image}) : super(key: key);
+  const PropertyOwner({Key? key, required this.name, required this.image, required this.onTap})
+      : super(key: key);
 
   final String name;
   final String image;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(children: [
         CircleAvatar(
-          radius: 35,
+          radius: 25.r,
           backgroundImage: NetworkImage(image),
         ),
         20.horizontalSpace,
@@ -33,8 +36,7 @@ class PropertyOwner extends StatelessWidget {
             ),
           ],
         )
-        
-      ]
+      ]),
     );
   }
 }

@@ -1,3 +1,4 @@
+import '../../utilities/extensions/context_extension.dart';
 import 'save_button.dart';
 import '../../utilities/constants/app_border_radius.dart';
 import '../../utilities/constants/app_colors.dart';
@@ -22,8 +23,9 @@ class PropertyCard extends StatelessWidget {
     required this.price,
     required this.imageUrl,
     required this.onTap,
-    required this.saveProperty, 
-    required this.isSaved, required this.deleteProperty,
+    required this.saveProperty,
+    required this.isSaved,
+    required this.deleteProperty,
   });
 
   @override
@@ -31,9 +33,9 @@ class PropertyCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 15.0),
+        padding: EdgeInsets.only(bottom: context.fullHeight * .0184),
         child: Container(
-          height: 295,
+          height: context.fullHeight * .365,
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: AppBorderRadius.a30,
@@ -53,14 +55,16 @@ class PropertyCard extends StatelessWidget {
                     borderRadius: AppBorderRadius.a30,
                     child: Image.network(
                       imageUrl,
-                      height: 169,
+                      height: context.fullHeight * .208,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 10.0),
+                    padding: EdgeInsets.only(
+                        left: context.fullWidth * .053,
+                        top: context.fullHeight * .016,
+                        bottom: context.fullHeight * .032),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -73,7 +77,7 @@ class PropertyCard extends StatelessWidget {
                               color: AppColors.lGrey,
                               size: 12,
                             ),
-                            5.verticalSpace,
+                            5.horizontalSpace,
                             Text(
                               location,
                               style: AppTextStyles.poppinsS12W500Grey,
@@ -94,10 +98,12 @@ class PropertyCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                top: 150,
-                right: 20,
+                top: context.fullHeight * .1847,
+                right: context.fullWidth * .069,
                 child: SaveButton(
-                  isSaved: isSaved, deleteProperty: deleteProperty, saveProperty: saveProperty,
+                  isSaved: isSaved,
+                  deleteProperty: deleteProperty,
+                  saveProperty: saveProperty,
                 ),
               ),
             ],

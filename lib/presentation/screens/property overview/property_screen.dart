@@ -1,3 +1,5 @@
+import '../owner_profile/owner_profile_screen.dart';
+import '../../../utilities/extensions/navigation_extension.dart';
 import 'widgets/room_view.dart';
 import 'property_location_screen.dart';
 import '../../widgets/save_button.dart';
@@ -28,7 +30,7 @@ class PropertyScreen extends StatelessWidget {
           children: [
             Stack(children: [
               SizedBox(
-                height: 445,
+                height: context.fullHeight * .548,
                 child: PageView.builder(
                   itemCount: property.images.length,
                   itemBuilder: (context, index) {
@@ -44,19 +46,20 @@ class PropertyScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const Positioned(
-                top: 40,
-                left: 30,
-                child: BackButton(
+              Positioned(
+                top: context.fullHeight * .049,
+                left: context.fullWidth * .08,
+                child: const BackButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(AppColors.lightGrey),
+                    backgroundColor:
+                        WidgetStatePropertyAll(AppColors.lightGrey),
                   ),
                 ),
               ),
               Positioned(
-                top: 310,
-                left: 30,
-                right: 30,
+                top: context.fullHeight * .385,
+                left: context.fullWidth * .08,
+                right: context.fullWidth * .08,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,10 +92,10 @@ class PropertyScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 30,
-                        top: 30,
+                      padding: EdgeInsets.only(
+                        left: context.fullWidth * .08,
+                        right: context.fullWidth * .08,
+                        top: context.fullHeight * .0431,
                       ),
                       child: Column(
                         children: [
@@ -103,15 +106,17 @@ class PropertyScreen extends StatelessWidget {
                                   title: property.title,
                                   location: property.city,
                                 ),
-                                SaveButton(isSaved: true, deleteProperty: () {  }, saveProperty: () {  },)
-                              ]
-                          ),
+                                SaveButton(
+                                  isSaved: true,
+                                  deleteProperty: () {},
+                                  saveProperty: () {},
+                                )
+                              ]),
                           20.verticalSpace,
                           RoomView(
-                            bathroom: property.bathroom, 
-                            bedroom: property.bedroom, 
-                            kitchen: property.kitchen
-                          ),
+                              bathroom: property.bathroom,
+                              bedroom: property.bedroom,
+                              kitchen: property.kitchen),
                           20.verticalSpace,
                           PropertyDescription(
                             description: property.description,
@@ -126,21 +131,25 @@ class PropertyScreen extends StatelessWidget {
                             topLeft: Radius.circular(25),
                             topRight: Radius.circular(25),
                           ),
-                          color: AppColors.lightGrey),
+                          color: AppColors.lightgrey),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 20),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: context.fullWidth * .08,
+                            vertical: context.fullHeight * .0246),
                         child: Column(
                           children: [
                             PropertyOwner(
                               name: property.ownerName,
                               image: property.ownerImg,
+                              onTap: () {
+                                context.to(OwnerProfileScreen(
+                                  property: property,
+                                ));
+                              },
                             ),
                             15.verticalSpace,
                             BottomButtons(
-                              scheduleTap: () {
-                                
-                              },
+                              scheduleTap: () {},
                               callTap: () async {
                                 final phoneNumber = 'tel:+994${property.phone}';
                                 await launchUrlString(phoneNumber);
