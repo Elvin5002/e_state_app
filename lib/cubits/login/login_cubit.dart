@@ -1,8 +1,8 @@
+import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-
 import '../../data/contracts/auth_contract.dart';
 
 part 'login_state.dart';
@@ -17,8 +17,15 @@ class LoginCubit extends Cubit<LoginState> {
   void login() async{
     try{
       emit(LoginLoading());
-      await _authContract.login(emailController.text, passwordController.text);
-      emit(LoginSuccess());
+      final user = await _authContract.login(emailController.text, passwordController.text);
+
+      if (user.emailVerified) {
+        emit(LoginSuccess());
+        log("Email is verified. You can proceed.");
+      } else {
+        await user.sendEmailVerification();
+        emit(LoginFailure("Email is not verified. Please verify your email."));
+      }
     }on FirebaseAuthException catch(e){
       emit(LoginFailure('$e'));
     }

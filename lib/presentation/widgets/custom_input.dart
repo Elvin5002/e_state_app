@@ -41,7 +41,6 @@ class CustomInput extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       style: const TextStyle(color: AppColors.black),
       decoration: InputDecoration(
-        isDense: true,
         hintText: hintText,
         hintStyle: AppTextStyles.poppinsS14W400Black,
         labelText: labelText,

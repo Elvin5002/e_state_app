@@ -1,4 +1,3 @@
-import '../../../utilities/extensions/context_extension.dart';
 import '../../widgets/loading_button.dart';
 import '../../widgets/custom_text_button.dart';
 import '../../../utilities/constants/app_text_styles.dart';
@@ -22,7 +21,7 @@ class LoginScreen extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.fullWidth * .08),
+        padding: const EdgeInsets.symmetric(horizontal: 33),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Form(
