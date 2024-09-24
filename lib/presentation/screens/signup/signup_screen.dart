@@ -1,6 +1,7 @@
 import '../../../cubits/signup/signup_cubit.dart';
 import '../../../utilities/constants/app_text_styles.dart';
 import '../../widgets/custom_text_button.dart';
+import '../../widgets/loading_button.dart';
 import '../../widgets/top_view.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_input.dart';
@@ -26,7 +27,7 @@ class SignupScreen extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 33),
+        padding: EdgeInsets.symmetric(horizontal: context.fullWidth * .08),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -120,15 +121,16 @@ class SignupScreen extends StatelessWidget {
                       }
                     },
                     builder: (context, state) {
-                      return CustomButton(
-                          onTap: () {
-                            if (formKey.currentState?.validate() ?? false) {
-                              cubit.signUp();
-                            }
-                          },
-                          width: context.fullWidth,
-                          color: AppColors.primary,
-                          text: AppTexts.signUp);
+                      final isLoading = state is SignupLoading;
+                      return LoadingButton(
+                        onTap: () {
+                          if (formKey.currentState?.validate() ?? false) {
+                            cubit.signUp();
+                          }
+                        },
+                        text: AppTexts.signUp, 
+                        isLoading: isLoading
+                      );
                     },
                   ),
                   36.verticalSpace,

@@ -44,5 +44,10 @@ class AppTextStyles {
   static final poppinsS14W400Blue = GoogleFonts.poppins(color: AppColors.lightBlue, fontSize: 14, fontWeight: FontWeight.w400);
   static final poppinsS14W400Grey = GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.sGrey);
   static final poppinsS12W400Blue = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppColors.lightBlue);
+  static final poppinsS16W400Black = GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w400,color: AppColors.black);
+  static final poppinsS24W700Black = GoogleFonts.poppins(fontSize: 24,fontWeight: FontWeight.w700,color: AppColors.black);
+  static final poppinsS16W500White = GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: AppColors.white);
+
+
 
 }

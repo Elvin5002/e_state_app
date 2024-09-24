@@ -1,7 +1,8 @@
-import 'package:e_state_app/presentation/widgets/save_button.dart';
-import 'package:e_state_app/utilities/constants/app_border_radius.dart';
-import 'package:e_state_app/utilities/constants/app_colors.dart';
-import 'package:e_state_app/utilities/constants/app_text_styles.dart';
+import '../../utilities/extensions/context_extension.dart';
+import 'save_button.dart';
+import '../../utilities/constants/app_border_radius.dart';
+import '../../utilities/constants/app_colors.dart';
+import '../../utilities/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,14 +12,20 @@ class PropertyCard extends StatelessWidget {
   final String price;
   final String imageUrl;
   final VoidCallback onTap;
+  final VoidCallback saveProperty;
+  final VoidCallback deleteProperty;
+  final bool isSaved;
 
   const PropertyCard({
     super.key,
     required this.title,
     required this.location,
     required this.price,
-    required this.imageUrl, 
+    required this.imageUrl,
     required this.onTap,
+    required this.saveProperty,
+    required this.isSaved,
+    required this.deleteProperty,
   });
 
   @override
@@ -26,9 +33,9 @@ class PropertyCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 15.0),
+        padding: EdgeInsets.only(bottom: context.fullHeight * .0184),
         child: Container(
-          height: 295,
+          height: context.fullHeight * .365,
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: AppBorderRadius.a30,
@@ -48,14 +55,16 @@ class PropertyCard extends StatelessWidget {
                     borderRadius: AppBorderRadius.a30,
                     child: Image.network(
                       imageUrl,
-                      height: 169,
+                      height: context.fullHeight * .208,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 10.0),
+                    padding: EdgeInsets.only(
+                        left: context.fullWidth * .053,
+                        top: context.fullHeight * .016,
+                        bottom: context.fullHeight * .032),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -68,7 +77,7 @@ class PropertyCard extends StatelessWidget {
                               color: AppColors.lGrey,
                               size: 12,
                             ),
-                            5.verticalSpace,
+                            5.horizontalSpace,
                             Text(
                               location,
                               style: AppTextStyles.poppinsS12W500Grey,
@@ -79,7 +88,8 @@ class PropertyCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(price, style: AppTextStyles.poppinsS22W500Blue),
+                            Text('\$$price',
+                                style: AppTextStyles.poppinsS22W500Blue),
                           ],
                         ),
                       ],
@@ -88,10 +98,12 @@ class PropertyCard extends StatelessWidget {
                 ],
               ),
               Positioned(
-                top: 150,
-                right: 20,
+                top: context.fullHeight * .1847,
+                right: context.fullWidth * .069,
                 child: SaveButton(
-                  onTap: (){}
+                  isSaved: isSaved,
+                  deleteProperty: deleteProperty,
+                  saveProperty: saveProperty,
                 ),
               ),
             ],

@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+class PropertyLocationScreen extends StatelessWidget {
+  const PropertyLocationScreen({Key? key, required this.initialLocation})
+      : super(key: key);
+
+  final LatLng initialLocation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Select Location'),
+      ),
+      body: GoogleMap(
+          initialCameraPosition: CameraPosition(
+            target: initialLocation,
+            zoom: 12,
+          ),
+          onMapCreated: (controller) {},
+          markers: {
+            Marker(
+              markerId: const MarkerId('selectedLocation'),
+              position: initialLocation,
+            ),
+          }),
+    );
+  }
+}

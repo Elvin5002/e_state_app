@@ -1,15 +1,19 @@
-import 'package:e_state_app/utilities/constants/app_text_styles.dart';
-import 'package:e_state_app/utilities/constants/app_texts.dart';
+import '../../../../utilities/constants/app_text_styles.dart';
+import '../../../../utilities/constants/app_texts.dart';
+import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfilBar extends StatelessWidget {
-  const ProfilBar({super.key});
+  const ProfilBar({super.key, required this.fullName, required this.image});
+
+  final String fullName;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: context.fullHeight * .012),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,19 +27,16 @@ class ProfilBar extends StatelessWidget {
               ),
               2.verticalSpace,
               Text(
-                AppTexts.james,
+                fullName,
                 style: AppTextStyles.poppinsS22W500Black,
               ),
             ],
           ),
-          SizedBox(
-            height: 37,
-            width: 37,
-            child: ClipOval(
-              child: Image.network(
-                'https://www.w3schools.com/w3images/avatar2.png', // Replace with your image URL
-                fit: BoxFit.cover,
-              ),
+          CircleAvatar(
+            radius: 22.r,
+            child: Image.network(
+              image,
+              fit: BoxFit.cover,
             ),
           ),
         ],

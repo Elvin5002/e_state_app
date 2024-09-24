@@ -1,10 +1,13 @@
-import 'package:e_state_app/presentation/widgets/save_button.dart';
+import '../owner_profile/owner_profile_screen.dart';
+import '../../../utilities/extensions/navigation_extension.dart';
+import 'widgets/room_view.dart';
+import 'property_location_screen.dart';
+import '../../widgets/save_button.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../data/models/property_model.dart';
 import '../../../utilities/extensions/context_extension.dart';
 import 'widgets/bottom_buttons.dart';
 import 'widgets/price_label.dart';
-import 'widgets/room_card.dart';
 import '../../../utilities/constants/app_assets.dart';
 import '../../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -26,26 +29,55 @@ class PropertyScreen extends StatelessWidget {
         child: Column(
           children: [
             Stack(children: [
-              Image.network(
-                property.image,
-                fit: BoxFit.cover,
-                height: 445,
-              ),
-              const Positioned(
-                top: 40,
-                left: 0,
-                child: BackButton(),
+              SizedBox(
+                height: context.fullHeight * .548,
+                child: PageView.builder(
+                  itemCount: property.images.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(property.images[index]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
               Positioned(
-                top: 310,
-                left: 30,
-                right: 30,
+                top: context.fullHeight * .049,
+                left: context.fullWidth * .08,
+                child: const BackButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        WidgetStatePropertyAll(AppColors.lightGrey),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: context.fullHeight * .385,
+                left: context.fullWidth * .08,
+                right: context.fullWidth * .08,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PriceLabel(price: property.price),
-                    SvgPicture.asset(AppAssets.edit)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PropertyLocationScreen(
+                              initialLocation: property.location,
+                            ),
+                          ),
+                        );
+                      },
+                      child: SvgPicture.asset(AppAssets.edit),
+                    ),
                   ],
                 ),
               ),
@@ -60,10 +92,10 @@ class PropertyScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 30,
-                        top: 30,
+                      padding: EdgeInsets.only(
+                        left: context.fullWidth * .08,
+                        right: context.fullWidth * .08,
+                        top: context.fullHeight * .0431,
                       ),
                       child: Column(
                         children: [
@@ -72,34 +104,19 @@ class PropertyScreen extends StatelessWidget {
                               children: [
                                 PropertyTitle(
                                   title: property.title,
-                                  location: property.location,
+                                  location: property.city,
                                 ),
                                 SaveButton(
-                                  onTap: (){
-                                    
-                                  }
+                                  isSaved: true,
+                                  deleteProperty: () {},
+                                  saveProperty: () {},
                                 )
                               ]),
                           20.verticalSpace,
-                          SizedBox(
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                RoomCard(
-                                    icon: AppAssets.bathroom,
-                                    label: '${property.bathroom} Bathroom'),
-                                10.horizontalSpace,
-                                RoomCard(
-                                    icon: AppAssets.bedroom,
-                                    label: '${property.bedroom} Bedroom'),
-                                10.horizontalSpace,
-                                RoomCard(
-                                    icon: AppAssets.kitchen,
-                                    label: '${property.kitchen} Kitchen'),
-                              ],
-                            ),
-                          ),
+                          RoomView(
+                              bathroom: property.bathroom,
+                              bedroom: property.bedroom,
+                              kitchen: property.kitchen),
                           20.verticalSpace,
                           PropertyDescription(
                             description: property.description,
@@ -114,21 +131,27 @@ class PropertyScreen extends StatelessWidget {
                             topLeft: Radius.circular(25),
                             topRight: Radius.circular(25),
                           ),
-                          color: AppColors.lightGrey),
+                          color: AppColors.lightgrey),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 20),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: context.fullWidth * .08,
+                            vertical: context.fullHeight * .0246),
                         child: Column(
                           children: [
                             PropertyOwner(
                               name: property.ownerName,
                               image: property.ownerImg,
+                              onTap: () {
+                                context.to(OwnerProfileScreen(
+                                  property: property,
+                                ));
+                              },
                             ),
                             15.verticalSpace,
                             BottomButtons(
                               scheduleTap: () {},
                               callTap: () async {
-                                final phoneNumber = 'tel:+994${property.phone}'; 
+                                final phoneNumber = 'tel:+994${property.phone}';
                                 await launchUrlString(phoneNumber);
                               },
                             )

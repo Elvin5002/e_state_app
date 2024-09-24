@@ -23,7 +23,7 @@ class BottomButtons extends StatelessWidget {
             width: context.fullWidth,
             color: AppColors.white,
             text: AppTexts.schedule,
-            borderColor: AppColors.grey,
+            borderColor: AppColors.grey500,
             textColor: AppColors.black,
             onTap: scheduleTap,
           ),

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:e_state_app/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
@@ -18,6 +19,7 @@ class UserInfoCubit extends Cubit<UserInfoState> {
   User get currentUser => FirebaseAuth.instance.currentUser!;
 
   final imageSubject = BehaviorSubject<File?>.seeded(null);
+  final userSubject = BehaviorSubject<UserModel?>();
 
   final controllers = {
     "fullName": TextEditingController(),
@@ -29,12 +31,21 @@ class UserInfoCubit extends Cubit<UserInfoState> {
     controllers['email']!.text = currentUser.email!;
   }
 
+  void getUser() async {
+    try {
+      final user = await _userContract.getUser(currentUser.uid);
+      userSubject.add(user);
+    } catch (e) {
+      userSubject.addError('Error occured');
+    }
+  }
+
   Future<void> updateUsers() async {
     try {
       emit(UserInfoLoading());
       String? imageUrl = await _uploadImageToStorage();
 
-    // If no image was uploaded, use a default image from assets
+      // If no image was uploaded, use a default image from assets
       if (imageUrl != null) await currentUser.updatePhotoURL(imageUrl);
       await currentUser.updateDisplayName(controllers['fullName']!.text);
       // await currentUser.updatePhotoURL();

@@ -1,11 +1,14 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 class PropertyModel {
   final String bathroom;
   final String bedroom;
   final String category;
   final String description;
-  final String image;
+  final List<String> images;
   final String kitchen;
-  final String location;
+  final LatLng location;
+  final String city;
   final String ownerImg;
   final String ownerName;
   final String phone;
@@ -18,9 +21,10 @@ class PropertyModel {
     required this.bedroom,
     required this.category,
     required this.description,
-    required this.image,
+    required this.images,
     required this.kitchen,
     required this.location,
+    required this.city,
     required this.ownerImg,
     required this.ownerName,
     required this.phone,
@@ -31,14 +35,16 @@ class PropertyModel {
 
   // fromMap method
   factory PropertyModel.fromMap(Map<String, dynamic> data) {
+    final locationData = data['location'] as Map<String, dynamic>;
     return PropertyModel(
       bathroom: data['bathroom'] as String,
       bedroom: data['bedroom'] as String,
       category: data['category'] as String,
       description: data['description'] as String,
-      image: data['image'] as String,
+      images: List<String>.from(data['images']),
       kitchen: data['kitchen'] as String,
-      location: data['location'] as String,
+      location: LatLng(locationData['latitude'], locationData['longitude']),
+      city: data['city'] as String,
       ownerImg: data['ownerImg'] as String,
       ownerName: data['ownerName'] as String,
       phone: data['phone'] as String,
@@ -55,9 +61,13 @@ class PropertyModel {
       'bedroom': bedroom,
       'category': category,
       'description': description,
-      'image': image,
+      'images': images,
       'kitchen': kitchen,
-      'location': location,
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude,
+      },
+      'city': city,
       'ownerImg': ownerImg,
       'ownerName': ownerName,
       'phone': phone,
