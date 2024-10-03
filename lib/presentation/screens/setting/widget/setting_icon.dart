@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../utilities/constants/app_text_styles.dart';
 
 class SettingIcon extends StatelessWidget {
   final String svgPath;
@@ -9,7 +8,7 @@ class SettingIcon extends StatelessWidget {
   final Color backgroundColor;
   final VoidCallback onTap;
 
-  SettingIcon({
+  const SettingIcon({super.key, 
     required this.svgPath,
     required this.text,
     required this.backgroundColor,
@@ -42,7 +41,7 @@ class SettingIcon extends StatelessWidget {
             12.horizontalSpace,
             Text(
               text,
-              style: AppTextStyles.poppinsS18W500Black,
+              style: Theme.of(context).textTheme.titleLarge,
             ), 
           ],
         ),

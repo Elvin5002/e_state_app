@@ -6,8 +6,8 @@ class CompanysModel {
   final String image;
 
   static const List<CompanysModel> companys = [
-    CompanysModel('Lark Homes','Broker','assets/c1.svg'),
-    CompanysModel('Axis Group ','Broker','assets/c2.svg'),
-    CompanysModel('Driggs','Broker','assets/c3.svg'),
+    CompanysModel('Lark Homes','Broker','assets/vectors/c1.svg'),
+    CompanysModel('Axis Group ','Broker','assets/vectors/c2.svg'),
+    CompanysModel('Driggs','Broker','assets/vectors/c3.svg'),
   ];
 }

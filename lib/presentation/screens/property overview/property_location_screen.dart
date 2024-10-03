@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PropertyLocationScreen extends StatelessWidget {
-  const PropertyLocationScreen({Key? key, required this.initialLocation})
-      : super(key: key);
+  const PropertyLocationScreen({super.key, required this.initialLocation});
 
   final LatLng initialLocation;
 

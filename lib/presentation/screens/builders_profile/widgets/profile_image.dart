@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileImage extends StatelessWidget {
-  const ProfileImage({Key? key, required this.img}) : super(key: key);
+  const ProfileImage({super.key, required this.img});
 
   final String img;
 

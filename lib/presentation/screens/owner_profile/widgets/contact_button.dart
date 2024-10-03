@@ -1,17 +1,15 @@
 import '../../../../utilities/extensions/context_extension.dart';
-import '../../../../utilities/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ContactButton extends StatelessWidget {
   const ContactButton(
-      {Key? key,
+      {super.key,
       required this.onTap,
       required this.backgroundColor,
       required this.title,
-      required this.icon})
-      : super(key: key);
+      required this.icon});
 
   final VoidCallback onTap;
   final Color backgroundColor;
@@ -42,7 +40,7 @@ class ContactButton extends StatelessWidget {
             10.verticalSpace,
             Text(
               title,
-              style: AppTextStyles.poppinsS12W400Black,
+              style: Theme.of(context).textTheme.labelMedium,
             )
           ],
         ),

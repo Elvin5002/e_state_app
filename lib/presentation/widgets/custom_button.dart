@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-const CustomButton({ Key? key, required this.width, required this.color, this.borderColor  = Colors.transparent, required this.text, this.textColor = Colors.white, this.widget, this.onTap}) : super(key: key);
+const CustomButton({ super.key, required this.width, required this.color, this.borderColor  = Colors.transparent, required this.text, this.textColor = Colors.white, this.widget, this.onTap});
 
   final double width;
   final Color color;
@@ -15,8 +15,10 @@ const CustomButton({ Key? key, required this.width, required this.color, this.bo
 
   @override
   Widget build(BuildContext context){
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
+      splashColor: Colors.blue.withOpacity(0.2), 
+      highlightColor: Colors.blue.withOpacity(0.1),
       child: Container(
         width: width,
         height: 50,

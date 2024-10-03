@@ -7,7 +7,7 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color color;
 
-  CustomContainer({
+  const CustomContainer({super.key, 
     required this.property, // Ensure property is required
     this.padding = const EdgeInsets.all(10.0),
     this.color = Colors.white,

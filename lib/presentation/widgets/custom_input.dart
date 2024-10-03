@@ -1,11 +1,9 @@
 import '../../utilities/constants/app_borders.dart';
 import 'package:flutter/material.dart';
-import '../../utilities/constants/app_colors.dart';
-import '../../utilities/constants/app_text_styles.dart';
 
 class CustomInput extends StatelessWidget {
   const CustomInput({
-    Key? key,
+    super.key,
     this.labelText,
     this.validator,
     this.obscureText = false,
@@ -15,8 +13,9 @@ class CustomInput extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.enabled = true,
-    this.keyboardType = TextInputType.text, this.line = 1,
-  }) : super(key: key);
+    this.keyboardType = TextInputType.text,
+    this.line = 1, this.onSubmitted,
+  });
 
   final String? labelText;
   final String? Function(String?)? validator;
@@ -29,28 +28,33 @@ class CustomInput extends StatelessWidget {
   final bool enabled;
   final TextInputType? keyboardType;
   final int line;
+  final void Function(String)? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      onFieldSubmitted: onSubmitted,
       obscureText: obscureText,
       validator: validator,
       keyboardType: keyboardType,
       maxLines: line,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: const TextStyle(color: AppColors.black),
+      style: Theme.of(context).textTheme.labelMedium,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppTextStyles.poppinsS14W400Black,
+        hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
         labelText: labelText,
+        labelStyle: Theme.of(context).inputDecorationTheme.labelStyle,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        fillColor: fillColor,
+        prefixIconColor: Theme.of(context).inputDecorationTheme.prefixIconColor,
+        suffixIconColor: Theme.of(context).inputDecorationTheme.suffixIconColor,
+        fillColor: Theme.of(context).inputDecorationTheme.fillColor,
         enabled: enabled,
         filled: true,
         contentPadding: const EdgeInsets.only(left: 20, top: 15, bottom: 15),
-        border: AppBorders.defaultInputBorder,
+        border: Theme.of(context).inputDecorationTheme.border,
         errorBorder: AppBorders.errorInputBorder,
       ),
     );

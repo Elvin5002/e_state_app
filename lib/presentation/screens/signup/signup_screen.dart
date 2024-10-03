@@ -1,5 +1,4 @@
 import '../../../cubits/signup/signup_cubit.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import '../../widgets/custom_text_button.dart';
 import '../../widgets/loading_button.dart';
 import '../../widgets/top_view.dart';
@@ -12,13 +11,13 @@ import '../../../utilities/helpers/pager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../utilities/constants/app_assets.dart';
-import '../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utilities/helpers/snacks.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignupScreen extends StatelessWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +34,8 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TopView(
-                    title: AppTexts.letsLogin,
+                  TopView(
+                    title: AppLocalizations.of(context)!.letsSign,
                   ),
                   40.verticalSpace,
                   Row(
@@ -56,7 +55,7 @@ class SignupScreen extends StatelessWidget {
                                   width: context.fullWidth,
                                   color: AppColors.red,
                                   widget: SvgPicture.asset(AppAssets.google),
-                                  text: AppTexts.google,
+                                  text: AppLocalizations.of(context)!.google,
                                   onTap: () => cubit.signInWithGoogle(),
                                 );
                             },
@@ -76,7 +75,7 @@ class SignupScreen extends StatelessWidget {
                               return CustomButton(
                                 width: context.fullWidth,
                                 color: AppColors.blue,
-                                text: AppTexts.facebook,
+                                text: AppLocalizations.of(context)!.facebook,
                                 widget: SvgPicture.asset(AppAssets.facebook),
                                 onTap: () => cubit.signInWithFacebook(),
                               );
@@ -86,13 +85,13 @@ class SignupScreen extends StatelessWidget {
                   ),
                   30.verticalSpace,
                   CustomInput(
-                    hintText: AppTexts.email,
+                    hintText: AppLocalizations.of(context)!.email,
                     controller: cubit.emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email cannot be empty';
+                        return AppLocalizations.of(context)!.emailEmpty;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Enter a valid email';
+                        return AppLocalizations.of(context)!.errorEmail;
                       }
                       return null;
                     },
@@ -100,13 +99,13 @@ class SignupScreen extends StatelessWidget {
                   20.verticalSpace,
                   CustomInput(
                     obscureText: true,
-                    hintText: AppTexts.password,
+                    hintText: AppLocalizations.of(context)!.password,
                     controller: cubit.passwordController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password cannot be empty';
+                        return AppLocalizations.of(context)!.passwordEmpty;
                       } else if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
+                        return AppLocalizations.of(context)!.passwordShort;
                       }
                       return null;
                     },
@@ -128,7 +127,7 @@ class SignupScreen extends StatelessWidget {
                             cubit.signUp();
                           }
                         },
-                        text: AppTexts.signUp, 
+                        text: AppLocalizations.of(context)!.signUp,
                         isLoading: isLoading
                       );
                     },
@@ -139,12 +138,12 @@ class SignupScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppTexts.dontAcc,
-                          style: AppTextStyles.poppinsS14W400Black,
+                          AppLocalizations.of(context)!.dontAcc,
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                         5.horizontalSpace,
                         CustomTextButton(
-                          text: AppTexts.signIn, 
+                          text: AppLocalizations.of(context)!.signIn,
                           onPressed: () => context.replace(Pager.login)
                         )
                       ],

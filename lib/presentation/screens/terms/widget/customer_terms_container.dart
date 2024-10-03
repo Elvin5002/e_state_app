@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTermsContainer extends StatelessWidget {
   final List<Widget> children; // Accepts a list of widgets
 
-  const CustomTermsContainer({Key? key, required this.children})
-      : super(key: key);
+  const CustomTermsContainer({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {

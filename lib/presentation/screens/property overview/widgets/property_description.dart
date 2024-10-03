@@ -1,10 +1,9 @@
-import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PropertyDescription extends StatelessWidget {
-  const PropertyDescription({Key? key, required this.description}) : super(key: key);
+  const PropertyDescription({super.key, required this.description});
 
   final String description;
 
@@ -15,13 +14,13 @@ class PropertyDescription extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          AppTexts.description,
-          style: AppTextStyles.poppinsS16W500Black,
+          AppLocalizations.of(context)!.description,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         8.verticalSpace,
         Text(
           description,
-          style: AppTextStyles.poppinsS12W400DarkGrey,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
       ],
     );

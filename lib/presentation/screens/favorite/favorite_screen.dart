@@ -2,14 +2,13 @@ import 'package:e_state_app/cubits/favorite/favorite_cubit.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/property_card.dart';
-import '../../../utilities/constants/app_text_styles.dart';
-import '../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../property overview/property_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({Key? key}) : super(key: key);
+  const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +16,13 @@ class FavoriteScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppTexts.saved,
-            style: AppTextStyles.poppinsS18W500Black,
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text(
+              AppLocalizations.of(context)!.saved,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
           ),
           28.verticalSpace,
           BlocBuilder<FavoriteCubit, FavoriteState>(

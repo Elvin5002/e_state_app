@@ -1,23 +1,24 @@
+import 'package:flutter/services.dart';
 import '../../../utilities/extensions/context_extension.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import '../../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../utilities/constants/app_assets.dart';
-import '../../../utilities/constants/app_texts.dart';
 import '../../../utilities/helpers/pager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -48,6 +49,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+      statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
+          ? Brightness.light
+          : Brightness.dark,
+    ));
     return Scaffold(
         body: Center(
       child: Column(
@@ -74,8 +81,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           ),
           20.verticalSpace,
           Text(
-            AppTexts.appName,
-            style: AppTextStyles.poppinsS24W400,
+            AppLocalizations.of(context)!.appName,
+            style: Theme.of(context).textTheme.headlineMedium,
           )
         ],
       ),

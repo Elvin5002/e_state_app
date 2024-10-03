@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../utilities/constants/app_assets.dart';
 import '../../../../utilities/constants/app_colors.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import '../../../widgets/custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactButtons extends StatelessWidget {
-  const ContactButtons({Key? key, this.messageTap, this.callTap})
-      : super(key: key);
+  const ContactButtons({super.key, this.messageTap, this.callTap});
 
   final void Function()? messageTap;
   final void Function()? callTap;
@@ -23,8 +22,8 @@ class ContactButtons extends StatelessWidget {
           flex: 1,
           child: CustomButton(
             width: context.fullWidth,
-            color: AppColors.white,
-            text: AppTexts.message,
+            color: AppColors.transparent,
+            text: AppLocalizations.of(context)!.message,
             borderColor: AppColors.lgreen,
             textColor: AppColors.primary,
             widget: SvgPicture.asset(AppAssets.message, color: AppColors.primary,),
@@ -37,7 +36,7 @@ class ContactButtons extends StatelessWidget {
           child: CustomButton(
             width: context.fullWidth,
             color: AppColors.primary,
-            text: AppTexts.call,
+            text: AppLocalizations.of(context)!.call,
             widget: SvgPicture.asset(AppAssets.call),
             onTap: callTap,
           ),

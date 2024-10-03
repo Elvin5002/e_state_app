@@ -9,7 +9,6 @@ import '../../../utilities/extensions/context_extension.dart';
 import 'widgets/bottom_buttons.dart';
 import 'widgets/price_label.dart';
 import '../../../utilities/constants/app_assets.dart';
-import '../../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +17,7 @@ import 'widgets/property_owner.dart';
 import 'widgets/property_title.dart';
 
 class PropertyScreen extends StatelessWidget {
-  const PropertyScreen({Key? key, required this.property}) : super(key: key);
+  const PropertyScreen({super.key, required this.property});
 
   final PropertyModel property;
 
@@ -49,11 +48,8 @@ class PropertyScreen extends StatelessWidget {
               Positioned(
                 top: context.fullHeight * .049,
                 left: context.fullWidth * .08,
-                child: const BackButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(AppColors.lightGrey),
-                  ),
+                child: BackButton(
+                  style: Theme.of(context).iconButtonTheme.style,
                 ),
               ),
               Positioned(
@@ -83,12 +79,12 @@ class PropertyScreen extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.only(top: context.fullHeight * .48),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25),
                     ),
-                    color: AppColors.white),
+                    color: Theme.of(context).cardColor),
                 child: Column(
                   children: [
                     Container(
@@ -126,12 +122,12 @@ class PropertyScreen extends StatelessWidget {
                     ),
                     20.verticalSpace,
                     Container(
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(25),
                             topRight: Radius.circular(25),
                           ),
-                          color: AppColors.lightgrey),
+                          color: Theme.of(context).shadowColor),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: context.fullWidth * .08,

@@ -1,6 +1,5 @@
 import '../../widgets/loading_button.dart';
 import '../../widgets/custom_text_button.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import '../../../cubits/login/login_cubit.dart';
 import '../../widgets/top_view.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
@@ -10,10 +9,10 @@ import '../../../utilities/helpers/pager.dart';
 import '../../../utilities/helpers/snacks.dart';
 import '../../widgets/custom_input.dart';
 import 'package:flutter/material.dart';
-import '../../../utilities/constants/app_texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +28,18 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TopView(title: AppTexts.letsSign),
+                  TopView(title: AppLocalizations.of(context)!.letsLogin,),
                   40.verticalSpace,
                   CustomInput(
                     controller: cubit.emailController,
                     obscureText: false,
-                    hintText: AppTexts.email,
+                    hintText: AppLocalizations.of(context)!.email,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email cannot be empty';
+                        return AppLocalizations.of(context)!.emailEmpty;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return 'Enter a valid email';
+                        return AppLocalizations.of(context)!.errorEmail;
                       }
                       return null;
                     },
@@ -49,12 +48,12 @@ class LoginScreen extends StatelessWidget {
                   CustomInput(
                     controller: cubit.passwordController,
                     obscureText: true,
-                    hintText: AppTexts.password,
+                    hintText: AppLocalizations.of(context)!.password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password cannot be empty';
+                        return AppLocalizations.of(context)!.passwordEmpty;
                       } else if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
+                        return AppLocalizations.of(context)!.passwordShort;
                       }
                       return null;
                     },
@@ -76,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                             cubit.login();
                           }
                         },
-                        text: AppTexts.login, 
+                        text: AppLocalizations.of(context)!.login, 
                         isLoading: isLoading
                       );
                     },
@@ -84,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                   20.verticalSpace,
                   Center(
                     child: CustomTextButton(
-                      text: AppTexts.forgotPassword,
+                      text: AppLocalizations.of(context)!.forgotPassword,
                       onPressed: () => context.replace(Pager.signup),
                     ),
                   ),
@@ -94,12 +93,12 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppTexts.dontAcc,
-                          style: AppTextStyles.poppinsS14W400Black,
+                          AppLocalizations.of(context)!.dontAcc,
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                         5.horizontalSpace,
                         CustomTextButton(
-                            text: AppTexts.signUp,
+                            text: AppLocalizations.of(context)!.signUp,
                             onPressed: () => context.replace(Pager.signup))
                       ],
                     ),

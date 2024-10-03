@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PhoneNumInput extends StatelessWidget {
-  const PhoneNumInput({Key? key, this.validator, required this.initialValue, this.phoneController, this.onInputChanged}) : super(key: key);
+  const PhoneNumInput({super.key, this.validator, required this.initialValue, this.phoneController, this.onInputChanged});
 
   final String? Function(String?)? validator;
   final PhoneNumber initialValue;
@@ -17,13 +18,15 @@ class PhoneNumInput extends StatelessWidget {
         selectorType: PhoneInputSelectorType.DROPDOWN,
       ),
       ignoreBlank: false,
+      textStyle: Theme.of(context).textTheme.labelMedium,
       autoValidateMode: AutovalidateMode.disabled,
-      selectorTextStyle: const TextStyle(color: Colors.black),
+      selectorTextStyle: Theme.of(context).textTheme.labelLarge,
       initialValue: initialValue,
       textFieldController: phoneController,
-      inputBorder: const OutlineInputBorder(),
-      inputDecoration: const InputDecoration(
-        hintText: 'Phone Number',
+      inputBorder: Theme.of(context).inputDecorationTheme.border,
+      inputDecoration: InputDecoration(
+        hintText: AppLocalizations.of(context)!.phoneNO,
+        hintStyle: Theme.of(context).inputDecorationTheme.hintStyle
       ),
       validator: validator,
     );

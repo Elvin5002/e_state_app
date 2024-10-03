@@ -11,7 +11,7 @@ import 'widgets/name_title.dart';
 import 'widgets/portfolio_title.dart';
 
 class BuildersProfileScreen extends StatelessWidget {
-  const BuildersProfileScreen({Key? key}) : super(key: key);
+  const BuildersProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,12 @@ class BuildersProfileScreen extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: context.fullHeight * .29),
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                       ),
-                      color: AppColors.white),
+                      color: Theme.of(context).shadowColor),
                   child: Column(
                     children: [
                       Container(
@@ -71,24 +71,24 @@ class BuildersProfileScreen extends StatelessWidget {
                       ),
                       30.verticalSpace,
                       Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30),
                             ),
-                            color: AppColors.lBlue),
+                            color: Theme.of(context).disabledColor),
                         child: const PropertyCount(
                             propertyCount: '255',
                             awardCount: '14',
                             apartmentCount: '270'),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30),
                             ),
-                            color: AppColors.sGrey),
+                            color: Theme.of(context).highlightColor),
                         child: Padding(
                           padding: EdgeInsets.all(context.fullWidth * .08),
                           child: Column(
@@ -100,8 +100,8 @@ class BuildersProfileScreen extends StatelessWidget {
                               GridView.builder(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: context.fullWidth * .04),
-                                shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
@@ -120,7 +120,7 @@ class BuildersProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

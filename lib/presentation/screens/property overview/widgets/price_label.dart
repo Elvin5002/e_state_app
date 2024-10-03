@@ -1,10 +1,10 @@
 import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriceLabel extends StatelessWidget {
-  const PriceLabel({Key? key, required this.price}) : super(key: key);
+  const PriceLabel({super.key, required this.price});
 
   final String price;
 
@@ -18,7 +18,7 @@ class PriceLabel extends StatelessWidget {
         ),
         13.horizontalSpace,
         Text(
-          AppTexts.per,
+          AppLocalizations.of(context)!.per,
           style: AppTextStyles.poppinsS12W400White,
         ),
       ],

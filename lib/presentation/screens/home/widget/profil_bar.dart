@@ -1,8 +1,8 @@
-import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ProfilBar extends StatelessWidget {
   const ProfilBar({super.key, required this.fullName, required this.image});
@@ -22,13 +22,13 @@ class ProfilBar extends StatelessWidget {
             children: [
               25.verticalSpace,
               Text(
-                AppTexts.hello,
-                style: AppTextStyles.poppinsS12W400Black,
+                AppLocalizations.of(context)!.hello,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
               2.verticalSpace,
               Text(
                 fullName,
-                style: AppTextStyles.poppinsS22W500Black,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
           ),
@@ -36,7 +36,7 @@ class ProfilBar extends StatelessWidget {
             radius: 22.r,
             child: Image.network(
               image,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
         ],

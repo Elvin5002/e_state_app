@@ -5,8 +5,7 @@ import '../../../../utilities/constants/app_colors.dart';
 import '../../../../utilities/constants/app_text_styles.dart';
 
 class NameTitle extends StatelessWidget {
-  const NameTitle({Key? key, required this.name, required this.location})
-      : super(key: key);
+  const NameTitle({super.key, required this.name, required this.location});
 
   final String name;
   final String location;
