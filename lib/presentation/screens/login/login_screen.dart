@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
     final formKey = GlobalKey<FormState>();
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 33),
@@ -28,18 +29,20 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TopView(title: AppLocalizations.of(context)!.letsLogin,),
+                  TopView(
+                    title: localizations.letsLogin,
+                  ),
                   40.verticalSpace,
                   CustomInput(
                     controller: cubit.emailController,
                     obscureText: false,
-                    hintText: AppLocalizations.of(context)!.email,
+                    hintText: localizations.email,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocalizations.of(context)!.emailEmpty;
+                        return localizations.emailEmpty;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return AppLocalizations.of(context)!.errorEmail;
+                        return localizations.errorEmail;
                       }
                       return null;
                     },
@@ -48,12 +51,12 @@ class LoginScreen extends StatelessWidget {
                   CustomInput(
                     controller: cubit.passwordController,
                     obscureText: true,
-                    hintText: AppLocalizations.of(context)!.password,
+                    hintText: localizations.password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocalizations.of(context)!.passwordEmpty;
+                        return localizations.passwordEmpty;
                       } else if (value.length < 6) {
-                        return AppLocalizations.of(context)!.passwordShort;
+                        return localizations.passwordShort;
                       }
                       return null;
                     },
@@ -70,20 +73,19 @@ class LoginScreen extends StatelessWidget {
                     builder: (context, state) {
                       final isLoading = state is LoginLoading;
                       return LoadingButton(
-                        onTap: () {
-                          if (formKey.currentState?.validate() ?? false) {
-                            cubit.login();
-                          }
-                        },
-                        text: AppLocalizations.of(context)!.login, 
-                        isLoading: isLoading
-                      );
+                          onTap: () {
+                            if (formKey.currentState?.validate() ?? false) {
+                              cubit.login();
+                            }
+                          },
+                          text: localizations.login,
+                          isLoading: isLoading);
                     },
                   ),
                   20.verticalSpace,
                   Center(
                     child: CustomTextButton(
-                      text: AppLocalizations.of(context)!.forgotPassword,
+                      text: localizations.forgotPassword,
                       onPressed: () => context.replace(Pager.signup),
                     ),
                   ),
@@ -93,12 +95,12 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.dontAcc,
+                          localizations.dontAcc,
                           style: Theme.of(context).textTheme.labelLarge,
                         ),
                         5.horizontalSpace,
                         CustomTextButton(
-                            text: AppLocalizations.of(context)!.signUp,
+                            text: localizations.signUp,
                             onPressed: () => context.replace(Pager.signup))
                       ],
                     ),

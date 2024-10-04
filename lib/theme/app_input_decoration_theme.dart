@@ -23,6 +23,10 @@ class AppInputDecorationTheme{
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(color: Colors.black, width: 2),
     ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red, width: 2),
+    ),
   );
 
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
@@ -43,6 +47,10 @@ class AppInputDecorationTheme{
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(color: Colors.white, width: 2),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red, width: 2),
     ),
   );
 }

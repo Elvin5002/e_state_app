@@ -1,4 +1,3 @@
-import '../../utilities/constants/app_borders.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
@@ -14,7 +13,10 @@ class CustomInput extends StatelessWidget {
     this.prefixIcon,
     this.enabled = true,
     this.keyboardType = TextInputType.text,
-    this.line = 1, this.onSubmitted,
+    this.line = 1,
+    this.onSubmitted,
+    this.action, 
+    this.focusNode,
   });
 
   final String? labelText;
@@ -29,33 +31,30 @@ class CustomInput extends StatelessWidget {
   final TextInputType? keyboardType;
   final int line;
   final void Function(String)? onSubmitted;
+  final TextInputAction? action;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      focusNode: focusNode,
       onFieldSubmitted: onSubmitted,
       obscureText: obscureText,
       validator: validator,
       keyboardType: keyboardType,
       maxLines: line,
+      textInputAction: action,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       style: Theme.of(context).textTheme.labelMedium,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
         labelText: labelText,
-        labelStyle: Theme.of(context).inputDecorationTheme.labelStyle,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        prefixIconColor: Theme.of(context).inputDecorationTheme.prefixIconColor,
-        suffixIconColor: Theme.of(context).inputDecorationTheme.suffixIconColor,
-        fillColor: Theme.of(context).inputDecorationTheme.fillColor,
         enabled: enabled,
         filled: true,
         contentPadding: const EdgeInsets.only(left: 20, top: 15, bottom: 15),
-        border: Theme.of(context).inputDecorationTheme.border,
-        errorBorder: AppBorders.errorInputBorder,
       ),
     );
   }

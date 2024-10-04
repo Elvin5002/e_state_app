@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import '../../../utilities/extensions/context_extension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
@@ -17,8 +16,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -26,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
     )..repeat(reverse: true);
 
     _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
@@ -49,12 +47,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Theme.of(context).scaffoldBackgroundColor,
-      statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
-          ? Brightness.light
-          : Brightness.dark,
-    ));
     return Scaffold(
         body: Center(
       child: Column(

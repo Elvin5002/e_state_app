@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PropertyLocationScreen extends StatelessWidget {
   const PropertyLocationScreen({super.key, required this.initialLocation});
@@ -10,7 +11,7 @@ class PropertyLocationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Location'),
+        title: Text(AppLocalizations.of(context)!.selectLocation),
       ),
       body: GoogleMap(
           initialCameraPosition: CameraPosition(

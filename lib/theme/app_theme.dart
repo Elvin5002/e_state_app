@@ -3,6 +3,7 @@ import 'package:e_state_app/theme/app_icon_button_theme.dart';
 import 'package:e_state_app/theme/app_input_decoration_theme.dart';
 import 'package:e_state_app/utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'app_text_theme.dart';
@@ -18,12 +19,26 @@ class AppTheme {
     canvasColor: AppColors.lpink,
     shadowColor: AppColors.lightGrey,
     highlightColor: AppColors.sGrey,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      modalBackgroundColor: AppColors.white,
+    ),
+    dividerColor: AppColors.sGrey,
     scaffoldBackgroundColor: AppColors.lightGrey,
     iconTheme: const IconThemeData(color: Colors.black),
     iconButtonTheme: AppIconButtonTheme.iconButtonLightTheme,
     textTheme: AppTextTheme.lightTextTheme,
     elevatedButtonTheme: AppElevatedButtonTheme.elevatedButtonLightTheme,
     appBarTheme: AppBarTheme(
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
       backgroundColor: AppColors.bg,
       elevation: 0,
       iconTheme: const IconThemeData(color: Colors.black),
@@ -46,6 +61,16 @@ class AppTheme {
     canvasColor: AppColors.canvas,
     shadowColor: AppColors.secondary,
     highlightColor: AppColors.secondary,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.secondary,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      modalBackgroundColor: AppColors.secondary,
+    ),
+    dividerColor: AppColors.white,
     scaffoldBackgroundColor: AppColors.secondary,
     iconTheme: const IconThemeData(color: AppColors.card),
     iconButtonTheme: AppIconButtonTheme.iconButtonLightTheme,
@@ -53,8 +78,12 @@ class AppTheme {
     elevatedButtonTheme: AppElevatedButtonTheme.elevatedButtonDarkTheme,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.secondary,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.white),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

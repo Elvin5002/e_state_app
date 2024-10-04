@@ -1,3 +1,7 @@
+import 'package:e_state_app/presentation/widgets/custom_button.dart';
+import 'package:e_state_app/presentation/widgets/custom_input.dart';
+import 'package:e_state_app/utilities/constants/app_colors.dart';
+
 import '../owner_profile/owner_profile_screen.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import 'widgets/room_view.dart';
@@ -15,6 +19,7 @@ import 'package:flutter_svg/svg.dart';
 import 'widgets/property_description.dart';
 import 'widgets/property_owner.dart';
 import 'widgets/property_title.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PropertyScreen extends StatelessWidget {
   const PropertyScreen({super.key, required this.property});
@@ -145,7 +150,9 @@ class PropertyScreen extends StatelessWidget {
                             ),
                             15.verticalSpace,
                             BottomButtons(
-                              scheduleTap: () {},
+                              scheduleTap: () {
+                                _showModal(context);
+                              },
                               callTap: () async {
                                 final phoneNumber = 'tel:+994${property.phone}';
                                 await launchUrlString(phoneNumber);
@@ -165,3 +172,72 @@ class PropertyScreen extends StatelessWidget {
     );
   }
 }
+
+void _showModal(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (context) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            16.verticalSpace,
+            Divider(
+              indent: context.fullWidth * 0.46,
+              endIndent: context.fullWidth * 0.46,
+              color: Theme.of(context).dividerColor
+            ),
+            10.verticalSpace,
+            Text(
+              AppLocalizations.of(context)!.schedule,
+              style: Theme.of(context).textTheme.titleMedium,
+            ), 
+            CustomInput(
+              labelText: AppLocalizations.of(context)!.title,
+            ),
+            SizedBox(height: 16),
+            CustomInput(
+              labelText: 'Choose Date',
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomInput(
+                      labelText: 'Start Time',
+                      suffixIcon: Icon(Icons.access_time),
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: CustomInput(
+                      labelText: 'End Time',
+                      suffixIcon: Icon(Icons.access_time),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Checkbox(
+                  value: false,
+                  onChanged: (value) {},
+                ),
+                Text('Notify Me'),
+              ],
+            ),
+            SizedBox(height: 16),
+            CustomButton(
+              width: context.fullWidth, 
+              color: AppColors.primary, 
+              text: 'Ask For Schedule',
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+/*1*/
