@@ -1,14 +1,12 @@
 import '../../../../utilities/extensions/context_extension.dart';
 import '../../../../utilities/constants/app_assets.dart';
-import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchView extends StatelessWidget {
-  const SearchView({Key? key, required this.onTap, required this.img})
-      : super(key: key);
+  const SearchView({super.key, required this.onTap, required this.img});
 
   final VoidCallback onTap;
   final String img;
@@ -21,8 +19,8 @@ class SearchView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppTexts.messages,
-            style: AppTextStyles.poppinsS18W500Black,
+            AppLocalizations.of(context)!.messages,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           Row(
             children: [

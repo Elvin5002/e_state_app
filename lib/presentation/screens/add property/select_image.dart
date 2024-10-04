@@ -1,11 +1,11 @@
-import '../../../utilities/constants/app_text_styles.dart';
 import 'widgets/container_view.dart';
 import '../../../cubits/property/property_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectImage extends StatelessWidget {
-  const SelectImage({Key? key}) : super(key: key);
+  const SelectImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class SelectImage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Icons.image, size: 40, color: Colors.grey),
-                          Text('Choose a picture', style: AppTextStyles.poppinsS14W400Black,),
+                          Text(AppLocalizations.of(context)!.choosePicture, style: Theme.of(context).textTheme.labelLarge,),
                         ],
                       )
                     : GridView.builder(

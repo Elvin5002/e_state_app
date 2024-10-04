@@ -1,6 +1,5 @@
 import '../../widgets/loading_button.dart';
 import '../../widgets/custom_text_button.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import '../../../cubits/login/login_cubit.dart';
 import '../../widgets/top_view.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
@@ -10,15 +9,16 @@ import '../../../utilities/helpers/pager.dart';
 import '../../../utilities/helpers/snacks.dart';
 import '../../widgets/custom_input.dart';
 import 'package:flutter/material.dart';
-import '../../../utilities/constants/app_texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
     final formKey = GlobalKey<FormState>();
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 33),
@@ -29,18 +29,20 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TopView(title: AppTexts.letsSign),
+                  TopView(
+                    title: localizations.letsLogin,
+                  ),
                   40.verticalSpace,
                   CustomInput(
                     controller: cubit.emailController,
                     obscureText: false,
-                    hintText: AppTexts.email,
+                    hintText: localizations.email,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email cannot be empty';
+                        return localizations.emailEmpty;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return 'Enter a valid email';
+                        return localizations.errorEmail;
                       }
                       return null;
                     },
@@ -49,12 +51,12 @@ class LoginScreen extends StatelessWidget {
                   CustomInput(
                     controller: cubit.passwordController,
                     obscureText: true,
-                    hintText: AppTexts.password,
+                    hintText: localizations.password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password cannot be empty';
+                        return localizations.passwordEmpty;
                       } else if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
+                        return localizations.passwordShort;
                       }
                       return null;
                     },
@@ -71,20 +73,19 @@ class LoginScreen extends StatelessWidget {
                     builder: (context, state) {
                       final isLoading = state is LoginLoading;
                       return LoadingButton(
-                        onTap: () {
-                          if (formKey.currentState?.validate() ?? false) {
-                            cubit.login();
-                          }
-                        },
-                        text: AppTexts.login, 
-                        isLoading: isLoading
-                      );
+                          onTap: () {
+                            if (formKey.currentState?.validate() ?? false) {
+                              cubit.login();
+                            }
+                          },
+                          text: localizations.login,
+                          isLoading: isLoading);
                     },
                   ),
                   20.verticalSpace,
                   Center(
                     child: CustomTextButton(
-                      text: AppTexts.forgotPassword,
+                      text: localizations.forgotPassword,
                       onPressed: () => context.replace(Pager.signup),
                     ),
                   ),
@@ -94,12 +95,12 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppTexts.dontAcc,
-                          style: AppTextStyles.poppinsS14W400Black,
+                          localizations.dontAcc,
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                         5.horizontalSpace,
                         CustomTextButton(
-                            text: AppTexts.signUp,
+                            text: localizations.signUp,
                             onPressed: () => context.replace(Pager.signup))
                       ],
                     ),

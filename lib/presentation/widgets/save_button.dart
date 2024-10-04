@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../utilities/constants/app_colors.dart';
 
 class SaveButton extends StatelessWidget {
-  const SaveButton({Key? key, required this.deleteProperty, required this.isSaved, required this.saveProperty}) : super(key: key);
+  const SaveButton({super.key, required this.deleteProperty, required this.isSaved, required this.saveProperty});
 
   final VoidCallback deleteProperty;
   final VoidCallback saveProperty;

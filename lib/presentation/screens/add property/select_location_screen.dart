@@ -2,6 +2,7 @@ import '../../../cubits/property/property_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class SelectLocationScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Location'),
+        title: Text(AppLocalizations.of(context)!.selectLocation),
         actions: [
           IconButton(
             icon: const Icon(Icons.check),

@@ -19,7 +19,7 @@ class AuthService {
     }
 
     // Optionally, sign out the user immediately to prevent access before email verification
-    //await FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
   }
 
   Future<User> login(String email, String password) async {
@@ -28,6 +28,11 @@ class AuthService {
       email: email,
       password: password,
     );
+
+    User? user = userCredentials.user;
+    if (user != null && !user.emailVerified) {
+      await user.sendEmailVerification();
+    }
 
     return userCredentials.user!;
   }

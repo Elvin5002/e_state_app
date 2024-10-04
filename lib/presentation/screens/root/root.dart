@@ -7,7 +7,6 @@ import '../../../cubits/home/home_cubit.dart';
 import '../home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../utilities/constants/app_colors.dart';
 import '../../widgets/bottom_nav_bar.dart';
 
 class Root extends StatelessWidget {
@@ -18,7 +17,6 @@ class Root extends StatelessWidget {
     final cubit = context.read<HomeCubit>();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.bg,
         body: StreamBuilder<int>(
             initialData: 0,
             stream: cubit.viewSubject.stream,

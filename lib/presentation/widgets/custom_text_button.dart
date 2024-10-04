@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../utilities/constants/app_text_styles.dart';
 
 class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+  const CustomTextButton({super.key, required this.text, required this.onPressed});
 
   final String text;
   final VoidCallback onPressed;

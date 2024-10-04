@@ -2,7 +2,7 @@ import 'package:e_state_app/utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class ItemView extends StatelessWidget {
-  const ItemView({Key? key, required this.img}) : super(key: key);
+  const ItemView({super.key, required this.img});
 
   final String img;
 

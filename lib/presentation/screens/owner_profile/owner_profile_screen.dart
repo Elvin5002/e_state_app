@@ -6,13 +6,11 @@ import 'widgets/contact_buttons_view.dart';
 import 'widgets/grid_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../data/models/property_model.dart';
-import '../../../utilities/constants/app_text_styles.dart';
-import '../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OwnerProfileScreen extends StatelessWidget {
-  const OwnerProfileScreen({Key? key, required this.property})
-      : super(key: key);
+  const OwnerProfileScreen({super.key, required this.property});
 
   final PropertyModel property;
 
@@ -21,8 +19,8 @@ class OwnerProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppTexts.profile,
-          style: AppTextStyles.poppinsS16W400Black,
+          AppLocalizations.of(context)!.profile,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         centerTitle: true,
       ),
@@ -40,13 +38,13 @@ class OwnerProfileScreen extends StatelessWidget {
             10.verticalSpace,
             Text(
               property.ownerName,
-              style: AppTextStyles.poppinsS18W500Black,
+              style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
             2.verticalSpace,
             Text(
               'akkdf@gmail.com',
-              style: AppTextStyles.poppinsS12W400Black,
+              style: Theme.of(context).textTheme.labelMedium,
               textAlign: TextAlign.center,
             ),
             20.verticalSpace,

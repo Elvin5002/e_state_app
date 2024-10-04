@@ -1,12 +1,9 @@
 import 'dart:io';
-
+import '../../widgets/loading_button.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../widgets/custom_input.dart';
 import '../../../utilities/constants/app_assets.dart';
-import '../../../utilities/constants/app_colors.dart';
-import '../../../utilities/constants/app_texts.dart';
-import '../../../utilities/extensions/context_extension.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +12,11 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import '../../../cubits/user/user_info_cubit.dart';
 import '../../../utilities/helpers/pager.dart';
 import '../../../utilities/helpers/snacks.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/phone_num_input.dart';
 
+
 class FillProfile extends StatelessWidget {
-  const FillProfile({Key? key}) : super(key: key);
+  const FillProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,19 +64,19 @@ class FillProfile extends StatelessWidget {
                   ),
                   15.verticalSpace,
                   CustomInput(
-                    hintText: AppTexts.fullName,
+                    hintText: AppLocalizations.of(context)!.fullName,
                     controller: cubit.controllers["fullName"],
                     prefixIcon: const Icon(Icons.person),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Full name cannot be empty';
+                        return AppLocalizations.of(context)!.fullNameEmpty;
                       }
                       return null;
                     },
                   ),
                   15.verticalSpace,
                   CustomInput(
-                    hintText: AppTexts.email,
+                    hintText: AppLocalizations.of(context)!.email,
                     controller: cubit.controllers["email"],
                     prefixIcon: const Icon(Icons.email),
                     enabled: false,
@@ -93,7 +90,7 @@ class FillProfile extends StatelessWidget {
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Phone number cannot be empty';
+                        return AppLocalizations.of(context)!.phoneEmpty;
                       }
                       return null;
                     },
@@ -108,15 +105,15 @@ class FillProfile extends StatelessWidget {
                       }
                     },
                     builder: (context, state) {
-                      return CustomButton(
-                        text: 'Continue',
+                      final isLoading = state is UserInfoLoading;
+                      return LoadingButton(
+                        text: AppLocalizations.of(context)!.davam,
                         onTap: () {
                           if (formKey.currentState?.validate() ?? false) {
                             cubit.updateUsers();
                           }
                         },
-                        width: context.fullWidth,
-                        color: AppColors.primary,
+                        isLoading: isLoading,
                       );
                     },
                   )

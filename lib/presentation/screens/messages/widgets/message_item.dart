@@ -1,18 +1,16 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
-import '../../../../utilities/constants/app_text_styles.dart';
 
 class MessageItem extends StatelessWidget {
   const MessageItem(
-      {Key? key,
+      {super.key,
       required this.img,
       required this.name,
       required this.time,
       required this.message,
       required this.isOnline,
-      required this.onTap})
-      : super(key: key);
+      required this.onTap});
 
   final String img;
   final String name;
@@ -59,12 +57,12 @@ class MessageItem extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: AppTextStyles.poppinsS12W400Black,
+                      style: Theme.of(context).textTheme.labelMedium,
                     ),
                     6.verticalSpace,
                     Text(
                       message,
-                      style: AppTextStyles.poppinsS10W400Grey,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
                 )
@@ -72,7 +70,7 @@ class MessageItem extends StatelessWidget {
             ),
             Text(
               time,
-              style: AppTextStyles.poppinsS10W400Grey,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
         ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'widgets/search_view.dart';
 
 class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({Key? key}) : super(key: key);
+  const MessagesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

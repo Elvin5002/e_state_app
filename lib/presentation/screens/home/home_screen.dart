@@ -7,12 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widget/category_icon.dart';
 import '../../widgets/property_card.dart';
 import '../../widgets/search_and_filter.dart';
-import '../../../utilities/constants/app_text_styles.dart';
-import '../../../utilities/constants/app_texts.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'widget/profil_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,7 +42,8 @@ class HomeScreen extends StatelessWidget {
                 }),
             15.verticalSpace,
             SearchAndFilter(
-              onTap: () {},
+              controller: cubit.searchController,
+              onSubmitted: (v) => cubit.fetchProperties(),
             ),
             15.verticalSpace,
             CategoryIcons(),
@@ -53,16 +53,16 @@ class HomeScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    AppTexts.allProperties,
-                    style: AppTextStyles.poppinsS20W500Black,
+                    AppLocalizations.of(context)!.allProperties,
+                    style: Theme.of(context).textTheme.displayLarge,
                   ),
                 ),
                 const Spacer(),
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    AppTexts.seeAll,
-                    style: AppTextStyles.poppinsS14W500Black,
+                    AppLocalizations.of(context)!.seeAll,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
               ],
@@ -103,6 +103,35 @@ class HomeScreen extends StatelessWidget {
                 return const SizedBox.shrink();
               },
             )
+            /*StreamBuilder(
+              stream: cubit.propertySubject.stream, 
+              builder:(context, snapshot) {
+                if (snapshot.hasData) {
+                  final properties = snapshot.data!;
+                  return ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: properties.length,
+                    itemBuilder: (context, i) {
+                      final isSaved = favoriteCubit.isPropertySaved(properties[i]);
+                      return PropertyCard(
+                        title: properties[i].title,
+                        location: properties[i].city,
+                        price: properties[i].price,
+                        imageUrl: properties[i].images[0],
+                        onTap: () => context.to(PropertyScreen(property: properties[i])),
+                        saveProperty: () =>
+                            favoriteCubit.saveProperty(properties[i]),
+                        isSaved: isSaved,
+                        deleteProperty: () =>
+                            favoriteCubit.deleteProperty(properties[i]),
+                      );
+                    },
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            )*/
           ],
         ),
       ),

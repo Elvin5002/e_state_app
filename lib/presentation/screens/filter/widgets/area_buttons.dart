@@ -2,14 +2,13 @@ import 'package:e_state_app/utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../cubits/filter/filter_cubit.dart';
 import '../../../../utilities/constants/app_colors.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import '../../../widgets/custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AreaButtons extends StatelessWidget {
-  const AreaButtons({Key? key}) : super(key: key);
+  const AreaButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class AreaButtons extends StatelessWidget {
                     child: CustomButton(
                       onTap: () => cubit.isSelect.value = true,
                       width: context.fullWidth,
-                      text: AppTexts.near,
+                      text: AppLocalizations.of(context)!.near,
                       color: cubit.isSelect.value
                           ? AppColors.blue
                           : AppColors.white,
@@ -43,7 +42,7 @@ class AreaButtons extends StatelessWidget {
                     child: CustomButton(
                       onTap: () => cubit.isSelect.value = false,
                       width: context.fullWidth,
-                      text: AppTexts.outside,
+                      text: AppLocalizations.of(context)!.outside,
                       color: cubit.isSelect.value
                           ? AppColors.white
                           : AppColors.blue,

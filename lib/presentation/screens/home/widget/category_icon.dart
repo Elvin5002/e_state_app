@@ -1,3 +1,4 @@
+import '../../../../utilities/constants/app_colors.dart';
 import '../../../../cubits/home/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,11 +44,11 @@ class CategoryIcons extends StatelessWidget {
                           width: context.fullWidth * .186,
                           height: context.fullHeight * .086,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: Theme.of(context).cardColor.withOpacity(0.5),
                                 spreadRadius: 2,
                                 blurRadius: 5,
                               ),
@@ -64,9 +65,10 @@ class CategoryIcons extends StatelessWidget {
                           Container(
                             width: context.fullWidth * .026,
                             height: context.fullHeight * .012,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.circle,
+                              border: Border.all(color: AppColors.white, width: 1)
                             ),
                           ),
                       ],

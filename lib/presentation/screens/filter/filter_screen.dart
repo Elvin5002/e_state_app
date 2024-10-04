@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../utilities/constants/app_colors.dart';
-import '../../../utilities/constants/app_texts.dart';
 import '../../../utilities/helpers/pager.dart';
 import '../../widgets/custom_button.dart';
 import 'widgets/filter_top_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterScreen extends StatelessWidget {
-  const FilterScreen({Key? key}) : super(key: key);
+  const FilterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class FilterScreen extends StatelessWidget {
                 const RangeSliderView(),
                 30.verticalSpace,
                 Text(
-                  AppTexts.wantBuy,
+                  AppLocalizations.of(context)!.wantBuy,
                   style: GoogleFonts.poppins(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -40,13 +40,13 @@ class FilterScreen extends StatelessWidget {
                     onTap: () => context.replace(Pager.login),
                     width: context.fullWidth,
                     color: AppColors.primary,
-                    text: AppTexts.properties),
+                    text: AppLocalizations.of(context)!.properties),
                 20.verticalSpace,
                 Center(
                   child: TextButton(
                       onPressed: () => context.replace(Pager.signup),
                       child: Text(
-                        AppTexts.skip,
+                        AppLocalizations.of(context)!.skip,
                         style: GoogleFonts.poppins(
                             color: AppColors.lightGreen, fontSize: 14),
                       )),

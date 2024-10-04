@@ -1,7 +1,7 @@
 import '../../../../utilities/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../utilities/constants/app_texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RangeSliderView extends StatefulWidget {
   const RangeSliderView({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _RangeSliderViewState extends State<RangeSliderView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppTexts.range,
+                AppLocalizations.of(context)!.range,
                 style: AppTextStyles.poppinsS16W500Black,
               ),
               Text(

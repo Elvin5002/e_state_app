@@ -37,11 +37,11 @@ class PropertyCard extends StatelessWidget {
         child: Container(
           height: context.fullHeight * .365,
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: AppBorderRadius.a30,
             boxShadow: [
               BoxShadow(
-                color: AppColors.lGrey.withOpacity(0.3),
+                color: Theme.of(context).cardColor.withOpacity(0.3),
                 blurRadius: 10,
                 offset: const Offset(0, 5),
               ),
@@ -68,7 +68,7 @@ class PropertyCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title, style: AppTextStyles.poppinsS18W500Black),
+                        Text(title, style: Theme.of(context).textTheme.titleLarge),
                         5.verticalSpace,
                         Row(
                           children: [
@@ -80,7 +80,7 @@ class PropertyCard extends StatelessWidget {
                             5.horizontalSpace,
                             Text(
                               location,
-                              style: AppTextStyles.poppinsS12W500Grey,
+                              style: Theme.of(context).textTheme.labelSmall,
                             ),
                           ],
                         ),

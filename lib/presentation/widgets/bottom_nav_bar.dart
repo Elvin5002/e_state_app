@@ -1,13 +1,12 @@
 import '../../cubits/home/home_cubit.dart';
 import 'bottom_nav_bar_items.dart';
 import '../../utilities/constants/app_assets.dart';
-import '../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,9 @@ class BottomNavBar extends StatelessWidget {
               iconSize: 24,
               onTap: (index) => cubit.viewSubject.add(index),
               selectedFontSize: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+              selectedIconTheme: Theme.of(context).bottomNavigationBarTheme.selectedIconTheme,
+              unselectedIconTheme: Theme.of(context).bottomNavigationBarTheme.unselectedIconTheme,
               currentIndex: selectedIndex!,
               items: [
                 for (final item in navItems)
@@ -37,7 +38,7 @@ class BottomNavBar extends StatelessWidget {
                     icon: SizedBox(
                         width: 20,
                         height: 20,
-                        child: SvgPicture.asset(item.icon)),
+                        child: SvgPicture.asset(item.icon, color: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,)),
                     activeIcon: Stack(
                       alignment: Alignment.center,
                       children: [
@@ -48,7 +49,7 @@ class BottomNavBar extends StatelessWidget {
                               height: 20,
                               child: SvgPicture.asset(
                                 item.activeIcon,
-                                color: AppColors.darkBlue,
+                                color: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
                               )),
                         ),
                         Positioned(

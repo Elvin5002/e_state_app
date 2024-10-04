@@ -19,7 +19,7 @@ class AppColors {
   static const grey = Color(0xFF9E9E9E);
   static const lightRed = Color(0xFFFC6C7D);
   static const Color darkBlue = Color(0xff2aa1f7);
-  static const Color lightPink = Color(0xffFFEEEB);
+  static const Color lightPink = Color(0xff3b2f3d);
   static const Color pink = Color(0xffFE8A71);
   static const Color lpink = Color(0xffFFF2EF);
   static const Color lightGrey = Color(0xffe9e9ea);
@@ -27,5 +27,9 @@ class AppColors {
   static const lgreen = Color(0xFF67D155);
   static const lightCoral = Color(0xFFFF9A3D);
   static const lBlue = Color(0xffDAEFFF);
-
+  static const inputColor = Color(0xff25283A);
+  static const bottomNav = Color(0xff26293C);
+  static const card = Color(0xff25283a);
+  static const secondary = Color(0xff1E1C2A);
+  static const canvas = Color(0xff262335);
 }

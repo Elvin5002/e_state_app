@@ -1,5 +1,4 @@
 import '../../widgets/loading_button.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import '../../../utilities/helpers/pager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'select_image.dart';
@@ -10,59 +9,64 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utilities/helpers/snacks.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddProperty extends StatefulWidget {
-  AddProperty({Key? key}) : super(key: key);
+  const AddProperty({super.key});
 
   @override
   State<AddProperty> createState() => _AddPropertyState();
 }
 
 class _AddPropertyState extends State<AddProperty> {
-  final List<String> _propertyTypes = ['House', 'Apartment', 'Villa'];
+  
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<PropertyCubit>();
+    final List<String> propertyTypes = [
+      'House',
+      'Apartment',
+      'Villa'];
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Form(
-          key: formKey,
+          key: formKey, 
           child: Column(
             children: [
               Text(
-                'Add Property',
-                style: AppTextStyles.poppinsS16W500Black,
+                AppLocalizations.of(context)!.addProperty,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               20.verticalSpace,
               CustomInput(
-                  hintText: 'Title',
+                  hintText: AppLocalizations.of(context)!.title,
                   controller: cubit.titleController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Title cannot be empty';
+                      return AppLocalizations.of(context)!.titleEmpty;
                     }
                     return null;
                   }),
               10.verticalSpace,
               CustomInput(
-                  hintText: 'Description',
+                  hintText: AppLocalizations.of(context)!.description,
                   controller: cubit.descriptionController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Description cannot be empty';
+                      return AppLocalizations.of(context)!.descriptionEmpty;
                     }
                     return null;
                   }),
               10.verticalSpace,
               CustomInput(
-                  hintText: 'Location',
+                  hintText: AppLocalizations.of(context)!.location,
                   controller: cubit.locationController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Location cannot be empty';
+                      return AppLocalizations.of(context)!.locationEmpty;
                     }
                     return null;
                   }),
@@ -72,12 +76,12 @@ class _AddPropertyState extends State<AddProperty> {
                   Expanded(
                     flex: 1,
                     child: CustomInput(
-                        hintText: 'Price',
+                        hintText: AppLocalizations.of(context)!.price,
                         controller: cubit.priceController,
                         keyboardType: TextInputType.number,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Price cannot be empty';
+                            return AppLocalizations.of(context)!.priceEmpty;
                           }
                           return null;
                         }),
@@ -86,12 +90,12 @@ class _AddPropertyState extends State<AddProperty> {
                   Expanded(
                     flex: 1,
                     child: CustomInput(
-                        hintText: 'Size',
+                        hintText: AppLocalizations.of(context)!.size,
                         controller: cubit.sizeController,
                         keyboardType: TextInputType.number,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Size cannot be empty';
+                            return AppLocalizations.of(context)!.sizeEmpty;
                           }
                           return null;
                         }),
@@ -102,10 +106,10 @@ class _AddPropertyState extends State<AddProperty> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Proprety type', style: AppTextStyles.poppinsS14W500Black,),
+                  Text(AppLocalizations.of(context)!.propertyType, style: Theme.of(context).textTheme.bodyLarge,),
                   DropdownButton<String>(
                     value: cubit.selectedCategory.value,
-                    items: _propertyTypes
+                    items: propertyTypes
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -137,7 +141,7 @@ class _AddPropertyState extends State<AddProperty> {
                   });
                 },
                 count: '${cubit.bedroomCount.value}',
-                room: 'Bedroom',
+                room: AppLocalizations.of(context)!.bedroom,
               ),
               10.verticalSpace,
               CountIcons(
@@ -156,7 +160,7 @@ class _AddPropertyState extends State<AddProperty> {
                   });
                 },
                 count: '${cubit.bathroomCount.value}',
-                room: 'Bathroom',
+                room: AppLocalizations.of(context)!.bathroom,
               ),
               10.verticalSpace,
               CountIcons(
@@ -175,7 +179,7 @@ class _AddPropertyState extends State<AddProperty> {
                   });
                 },
                 count: '${cubit.kitchenCount.value}',
-                room: 'Kitchen',
+                room: AppLocalizations.of(context)!.kitchen,
               ),
               20.verticalSpace,
               ElevatedButton(
@@ -190,7 +194,7 @@ class _AddPropertyState extends State<AddProperty> {
                     cubit.updateLocation(selectedLocation);
                   }
                 },
-                child: Text("Select Location", style: AppTextStyles.poppinsS14W400Black,),
+                child: Text(AppLocalizations.of(context)!.selectLocation, style: Theme.of(context).textTheme.labelLarge,),
               ),
               20.verticalSpace,
               const SelectImage(),
@@ -200,7 +204,7 @@ class _AddPropertyState extends State<AddProperty> {
                   if (state is PropertyFailure) {
                     Snacks.error(context, state.message);
                   } else if (state is PropertySuccess) {
-                    Snacks.success(context, 'Successfully Added');
+                    Snacks.success(context, AppLocalizations.of(context)!.successfullyAdded);
                     cubit.clearInputs();
                   }
                 },
@@ -212,7 +216,7 @@ class _AddPropertyState extends State<AddProperty> {
                         cubit.addProperty();
                       }
                     },
-                    text: 'Save', 
+                    text: AppLocalizations.of(context)!.save, 
                     isLoading: isLoading
                   );
                 },

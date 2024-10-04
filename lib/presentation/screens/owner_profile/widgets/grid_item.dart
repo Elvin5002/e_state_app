@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GridItem extends StatelessWidget {
-  const GridItem({Key? key, required this.img, required this.onTap}) : super(key: key);
+  const GridItem({super.key, required this.img, required this.onTap});
 
   final String img;
   final VoidCallback onTap;

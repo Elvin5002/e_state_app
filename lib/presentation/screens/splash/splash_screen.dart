@@ -1,17 +1,16 @@
 import '../../../utilities/extensions/context_extension.dart';
-import '../../../utilities/constants/app_text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../utilities/extensions/navigation_extension.dart';
 import '../../../utilities/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../utilities/constants/app_assets.dart';
-import '../../../utilities/constants/app_texts.dart';
 import '../../../utilities/helpers/pager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -25,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
     )..repeat(reverse: true);
 
     _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
@@ -74,8 +73,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           ),
           20.verticalSpace,
           Text(
-            AppTexts.appName,
-            style: AppTextStyles.poppinsS24W400,
+            AppLocalizations.of(context)!.appName,
+            style: Theme.of(context).textTheme.headlineMedium,
           )
         ],
       ),

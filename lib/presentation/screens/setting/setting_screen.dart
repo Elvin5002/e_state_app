@@ -6,11 +6,12 @@ import '../../../utilities/helpers/pager.dart';
 import 'widget/setting_icon.dart';
 import '../../../utilities/constants/app_assets.dart';
 import '../../../utilities/constants/app_colors.dart';
-import '../../../utilities/constants/app_text_styles.dart';
-import '../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<UserInfoCubit>();
@@ -21,61 +22,61 @@ class SettingScreen extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              AppTexts.setting,
+              AppLocalizations.of(context)!.setting,
               textAlign: TextAlign.center,
-              style: AppTextStyles.poppinsS22W500Black,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           28.verticalSpace,
           Text(
-            AppTexts.basicInfo,
-            style: AppTextStyles.poppinsS18W500Black,
+            AppLocalizations.of(context)!.basicInfo,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           20.verticalSpace,
           SettingIcon(
             svgPath: AppAssets.person,
-            text: AppTexts.pProfil,
+            text: AppLocalizations.of(context)!.pProfil,
             backgroundColor: AppColors.lorange,
             onTap: () {},
           ),
           SettingIcon(
             svgPath: AppAssets.lock,
-            text: AppTexts.changePass,
+            text: AppLocalizations.of(context)!.changePass,
             backgroundColor: AppColors.lgreen,
             onTap: () {},
           ),
           45.verticalSpace,
           Text(
-            AppTexts.others,
-            style: AppTextStyles.poppinsS18W500Black,
+            AppLocalizations.of(context)!.others,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           20.verticalSpace,
           SettingIcon(
               svgPath: AppAssets.privacy,
-              text: AppTexts.privacePolicy,
+              text: AppLocalizations.of(context)!.privacePolicy,
               backgroundColor: AppColors.lightRed,
               onTap: () => context.to(Pager.privacyPolicy)),
           SettingIcon(
             svgPath: AppAssets.data,
-            text: AppTexts.dataSaver,
+            text: AppLocalizations.of(context)!.dataSaver,
             backgroundColor: AppColors.lightBlue,
             onTap: () {},
           ),
           SettingIcon(
             svgPath: AppAssets.star,
-            text: AppTexts.rateUs,
+            text: AppLocalizations.of(context)!.rateUs,
             backgroundColor: AppColors.lorange,
             onTap: () {},
           ),
           SettingIcon(
             svgPath: AppAssets.terms,
-            text: AppTexts.termsUse,
+            text: AppLocalizations.of(context)!.termsUse,
             backgroundColor: AppColors.lightRed,
             onTap: () {},
           ),
           SettingIcon(
               svgPath: AppAssets.phone,
-              text: AppTexts.contactUs,
+              text: AppLocalizations.of(context)!.contactUs,
               backgroundColor: AppColors.lgreen,
               onTap: () => context.to(Pager.contact)),
           BlocListener<UserInfoCubit, UserInfoState>(
@@ -86,7 +87,7 @@ class SettingScreen extends StatelessWidget {
             },
             child: SettingIcon(
               svgPath: AppAssets.logout,
-              text: AppTexts.logOut,
+              text: AppLocalizations.of(context)!.logOut,
               backgroundColor: AppColors.lgreen,
               onTap: () => cubit.logOut(),
             ),

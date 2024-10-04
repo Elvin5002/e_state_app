@@ -1,10 +1,7 @@
 import 'package:e_state_app/data/local/comments_model.dart';
-import 'package:e_state_app/utilities/constants/app_text_styles.dart';
 import 'package:e_state_app/utilities/extensions/context_extension.dart';
 import 'package:e_state_app/utilities/extensions/sizedbox_extension.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../utilities/constants/app_colors.dart';
 
 class Comments extends StatelessWidget {
   const Comments({
@@ -18,7 +15,7 @@ class Comments extends StatelessWidget {
       width: context.fullWidth * 0.84,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-          color: AppColors.white, borderRadius: BorderRadius.circular(15)),
+          color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(15)),
       child: Column(
         children: [
           Row(
@@ -30,11 +27,11 @@ class Comments extends StatelessWidget {
                 children: [
                   Text(
                     comment.fullName,
-                    style: AppTextStyles.poppinsS14W500Black,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Text(
                     comment.work,
-                    style: AppTextStyles.poppinsS12W400Black,
+                    style: Theme.of(context).textTheme.labelMedium,
                   )
                 ],
               )
@@ -43,7 +40,7 @@ class Comments extends StatelessWidget {
           15.h,
           Text(
             comment.comment,
-            style: AppTextStyles.poppinsS12W400Black,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ],
       ),

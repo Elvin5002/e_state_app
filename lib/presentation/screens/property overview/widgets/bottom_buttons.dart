@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
+
 import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../utilities/constants/app_assets.dart';
 import '../../../../utilities/constants/app_colors.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import '../../../widgets/custom_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomButtons extends StatelessWidget {
-  const BottomButtons({Key? key, this.scheduleTap, this.callTap}) : super(key: key);
+  const BottomButtons({super.key, this.scheduleTap, this.callTap});
 
   final void Function()? scheduleTap;
   final void Function()? callTap;
@@ -21,10 +23,10 @@ class BottomButtons extends StatelessWidget {
           flex: 1,
           child: CustomButton(
             width: context.fullWidth,
-            color: AppColors.white,
-            text: AppTexts.schedule,
+            color: AppColors.transparent,
+            text: AppLocalizations.of(context)!.schedule,
             borderColor: AppColors.grey500,
-            textColor: AppColors.black,
+            textColor: Theme.of(context).textTheme.bodyLarge!.color!,
             onTap: scheduleTap,
           ),
         ),
@@ -34,7 +36,7 @@ class BottomButtons extends StatelessWidget {
           child: CustomButton(
             width: context.fullWidth,
             color: AppColors.primary,
-            text: AppTexts.call,
+            text: AppLocalizations.of(context)!.call,
             widget: SvgPicture.asset(AppAssets.call),
             onTap: callTap,
           ),

@@ -1,16 +1,14 @@
-import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import '../../../../utilities/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PropertyCount extends StatelessWidget {
   const PropertyCount(
-      {Key? key,
+      {super.key,
       required this.propertyCount,
       required this.awardCount,
-      required this.apartmentCount})
-      : super(key: key);
+      required this.apartmentCount});
 
   final String propertyCount;
   final String awardCount;
@@ -21,29 +19,29 @@ class PropertyCount extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: context.fullWidth * .08,
-          vertical: context.fullHeight * .037),
+          vertical: context.fullHeight * .04),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             children: [
-              Text(propertyCount, style: AppTextStyles.poppinsS24W700Black),
+              Text(propertyCount, style: Theme.of(context).textTheme.headlineLarge),
               1.verticalSpace,
-              Text(AppTexts.property, style: AppTextStyles.poppinsS14W400Black)
+              Text(AppLocalizations.of(context)!.property, style: Theme.of(context).textTheme.labelLarge)
             ],
           ),
           Column(
             children: [
-              Text(awardCount, style: AppTextStyles.poppinsS24W700Black),
+              Text(awardCount, style: Theme.of(context).textTheme.headlineLarge),
               1.verticalSpace,
-              Text(AppTexts.awards, style: AppTextStyles.poppinsS14W400Black)
+              Text(AppLocalizations.of(context)!.awards, style: Theme.of(context).textTheme.labelLarge)
             ],
           ),
           Column(
             children: [
-              Text(apartmentCount, style: AppTextStyles.poppinsS24W700Black),
+              Text(apartmentCount, style: Theme.of(context).textTheme.headlineLarge),
               1.verticalSpace,
-              Text(AppTexts.apartment, style: AppTextStyles.poppinsS14W400Black)
+              Text(AppLocalizations.of(context)!.apartment, style: Theme.of(context).textTheme.labelLarge)
             ],
           )
         ],

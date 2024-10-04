@@ -1,11 +1,9 @@
-import '../../../../utilities/constants/app_text_styles.dart';
-import '../../../../utilities/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PropertyOwner extends StatelessWidget {
-  const PropertyOwner({Key? key, required this.name, required this.image, required this.onTap})
-      : super(key: key);
+  const PropertyOwner({super.key, required this.name, required this.image, required this.onTap});
 
   final String name;
   final String image;
@@ -27,12 +25,12 @@ class PropertyOwner extends StatelessWidget {
           children: [
             Text(
               name,
-              style: AppTextStyles.poppinsS14W500Black,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             1.verticalSpace,
             Text(
-              AppTexts.propOwner,
-              style: AppTextStyles.poppinsS10W400Grey,
+              AppLocalizations.of(context)!.propOwner,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
         )
