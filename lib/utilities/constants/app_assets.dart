@@ -50,5 +50,7 @@ class AppAssets {
   static const phone = "$vectors/phone.svg";
   static const logout = "$vectors/logout.svg";
   static const messageB = "$vectors/messageB.svg";
+  static const offer = '$vectors/offer.svg';
+  static const company = '$vectors/company.svg';
   static const list = "$vectors/list.svg";
 }

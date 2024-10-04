@@ -31,5 +31,6 @@ class AppColors {
   static const bottomNav = Color(0xff26293C);
   static const card = Color(0xff25283a);
   static const secondary = Color(0xff1E1C2A);
-  static const canvas = Color(0xff262335);
+  static const canvas = Color(0xff262335);//background: #3793FF;
+  static const lBkue = Color(0xff3793FF);
 }

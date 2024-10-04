@@ -36,12 +36,12 @@ class AppTheme {
     elevatedButtonTheme: AppElevatedButtonTheme.elevatedButtonLightTheme,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: AppColors.lightGrey,
         statusBarIconBrightness: Brightness.dark,
       ),
       backgroundColor: AppColors.bg,
       elevation: 0,
-      iconTheme: const IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: AppColors.white),
       titleTextStyle: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.sGrey),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -79,11 +79,11 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.secondary,
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: AppColors.secondary,
         statusBarIconBrightness: Brightness.light,
       ),
       elevation: 0,
-      iconTheme: const IconThemeData(color: Colors.white),
+      iconTheme: const IconThemeData(color: AppColors.canvas),
       titleTextStyle: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.white),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
